@@ -1,9 +1,9 @@
 {
   "name": "yoso-ui",
-  "private": true,
   "version": "0.0.1",
   "type": "module",
   "author": "ori_ <ori_@kakao.com>",
+  "description": "A React UI library",
   "license": "MIT",
   "files": [
     "dist",
@@ -29,7 +29,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "react": "^18.3.1",
