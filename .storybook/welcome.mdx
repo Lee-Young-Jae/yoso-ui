@@ -1,0 +1,41 @@
+import React from "react";
+import styled from "styled-components";
+
+// welcome.mdx
+
+export const Welcome = () => {
+  return (
+    <Wrapper>
+      <Section>
+        <h1>Welcome 🙌</h1>
+        <p>
+          안녕하세요 YOSO UI 입니다. YOSO UI는 React를 위한 컴포넌트
+          라이브러리로 다양한 컴포넌트를 제공합니다.
+        </p>
+      </Section>
+    </Wrapper>
+  );
+};
+
+export default {
+  title: "Welcome",
+  component: Welcome,
+  parameters: {
+    viewMode: "canvas",
+    previewTabs: {
+      "storybook/docs/panel": { hidden: true },
+    },
+    options: {
+      showPanel: false,
+    },
+  },
+};
+
+const Wrapper = styled.div`  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;`;
+
+const Section = styled.section`  text-align: center;
+  max-width: 600px;
+  padding: 0 20px;`;
