@@ -1,14 +1,14 @@
 import { Meta, StoryFn } from "@storybook/react";
 import Button, { ButtonProps } from "./Button";
 import { ThemeProvider } from "styled-components";
-import { theme } from "../../styles/theme";
+import defaultTheme from "../../styles/theme";
 
 export default {
   title: "Components/Button",
   component: Button,
   decorators: [
     (Story) => (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={defaultTheme}>
         <Story />
       </ThemeProvider>
     ),
