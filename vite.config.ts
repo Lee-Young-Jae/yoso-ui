@@ -5,10 +5,16 @@ import path from "path";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), dts()],
+  plugins: [
+    react(),
+    dts({
+      outDir: "dist/src",
+      include: ["src"],
+    }),
+  ],
   build: {
     lib: {
-      entry: path.resolve(__dirname, "index.ts"),
+      entry: path.resolve(__dirname, "src/index.ts"),
       name: "yoso-ui",
       fileName: (format) => `index.${format}.js`,
     },
@@ -21,6 +27,7 @@ export default defineConfig({
         },
       },
     },
+    outDir: "dist",
     sourcemap: true,
     emptyOutDir: true,
   },
