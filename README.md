@@ -1,50 +1,47 @@
-# React + TypeScript + Vite
+<div align="center">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1>YOSO UI</h1>
 
-Currently, two official plugins are available:
+YOSO UI는 한국어 "요소"에서 따온 이름으로, 일관된 디자인을 가진 웹 UI를 만들기 위한 React 컴포넌트 라이브러리입니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+</div>
 
-## Expanding the ESLint configuration
+## 📦 Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+npm install yoso-ui@latest
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🚀 Usage
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 기본 테마 적용
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```jsx
+import React from "react";
+import { YosoThemeProvider } from "yoso-ui";
+
+const App = () => {
+  return (
+    <YosoThemeProvider>
+      <YourApp />
+    </YosoThemeProvider>
+  );
+};
 ```
+
+### 컴포넌트 사용
+
+```jsx
+import React from "react";
+import { Button } from "yoso-ui";
+
+const YourComponent = () => {
+  return <Button>Click me!</Button>;
+};
+```
+
+## 📚 Documentation
+
+작성중...
+
+[https://yoso-ui.github.io/yoso-ui](https://yoso-ui.github.io/yoso-ui)
