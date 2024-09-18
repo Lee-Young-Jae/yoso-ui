@@ -58,7 +58,7 @@ export interface Theme {
 }
 
 const defaultTheme: Theme = {
-  defaultColor: "#2196F3",
+  defaultColor: "#7C93C3",
   colors: {
     RED_300: "#FFCDD2",
     RED_500: "#F44336",
