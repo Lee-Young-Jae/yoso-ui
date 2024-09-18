@@ -38,7 +38,7 @@ const StyledButton = styled.button<{
   cursor: pointer;
   user-select: none;
   border: 1px solid transparent;
-  transition: ${({ theme }) => theme.transitions.default};
+  transition: ${({ theme }) => theme.transitions.fast};
   white-space: nowrap;
 
   // 크기
@@ -132,7 +132,7 @@ const StyledButton = styled.button<{
         background-color: transparent;
         border-color: transparent;
         &:hover:not(:disabled) {
-          background-color: ${theme.colors.GRAY_300};
+          background-color: ${theme.colors.GRAY_100};
         }
       `;
     } else {
