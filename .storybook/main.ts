@@ -5,15 +5,16 @@ const config: StorybookConfig = {
     // "../src/**/*.mdx",
     // "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
     "../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-    "./welcome.mdx",
+    // "../src/components/**/*.mdx",
   ],
   addons: [
+    "@storybook/addon-docs",
     "@storybook/addon-onboarding",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
-    "@storybook/addon-themes"
+    "@storybook/addon-themes",
   ],
   core: {
     builder: "@storybook/builder-vite",
