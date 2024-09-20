@@ -2,6 +2,7 @@ import React, { HTMLAttributes, ReactNode, useEffect, useRef } from "react";
 import styled, { css, keyframes } from "styled-components";
 
 import { Portal } from "../Portal/Portal";
+import { useScrollLock } from "./useScrollLock";
 
 interface ModalProps {
   opened: boolean;
@@ -23,6 +24,8 @@ const Modal = ({
   const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
   const modalInnerRef = useRef<HTMLDivElement>(null);
   const modalRoot = useRef<HTMLElement | null>(null);
+
+  useScrollLock(opened);
 
   const handleHide = () => {
     hide();
