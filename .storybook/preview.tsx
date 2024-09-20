@@ -1,6 +1,7 @@
 import React from "react";
-import YosoThemeProvider from "../src/providers/YosoThemeProvider";
 import { Preview } from "@storybook/react";
+
+import YosoThemeProvider from "../src/providers/YosoThemeProvider";
 
 const preview: Preview = {
   decorators: [
