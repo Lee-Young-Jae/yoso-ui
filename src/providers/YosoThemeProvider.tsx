@@ -27,7 +27,10 @@ const YosoThemeProvider = ({
   }, [theme]);
 
   return (
-    <StyledThemeProvider theme={mergedTheme}>{children}</StyledThemeProvider>
+    <StyledThemeProvider theme={mergedTheme}>
+      {children}
+      <div id="modalRoot" />
+    </StyledThemeProvider>
   );
 };
 
