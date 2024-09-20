@@ -55,6 +55,10 @@ export interface Theme {
     fast: "all 0.1s ease";
     slow: "all 0.5s ease";
   };
+
+  zIndex?: {
+    modal: number;
+  };
 }
 
 const defaultTheme: Theme = {
@@ -112,6 +116,10 @@ const defaultTheme: Theme = {
     default: "all 0.3s ease",
     fast: "all 0.1s ease",
     slow: "all 0.5s ease",
+  },
+
+  zIndex: {
+    modal: 1000,
   },
 };
 
