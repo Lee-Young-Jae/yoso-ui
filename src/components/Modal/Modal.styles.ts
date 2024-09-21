@@ -1,15 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
 
-const fadeIn = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1; }
-`;
-
-const fadeOut = keyframes`
-  from { opacity: 1; }
-  to { opacity: 0; }
-`;
-
 const slideUp = keyframes`
   from { transform: translateY(50px); }
   to { transform: translateY(0); }
@@ -38,7 +28,6 @@ export const StyledModal = styled.div<{
   z-index: ${({ theme }) => theme.zIndex.modal};
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0s 0.3s;
 
   ${({ $opened, $isAnimating }) =>
     $opened && !$isAnimating
@@ -46,13 +35,11 @@ export const StyledModal = styled.div<{
           opacity: 1;
           visibility: visible;
           transition: opacity 0.3s;
-          animation: ${fadeIn} 0.3s;
         `
       : css`
           opacity: 0;
           visibility: hidden;
           transition: opacity 0.3s, visibility 0s 0.3s;
-          animation: ${fadeOut} 0.3s;
         `}
 `;
 
@@ -70,6 +57,7 @@ export const StyledModalInner = styled.div<{
   min-width: 250px;
   padding: ${({ theme }) => theme.spacing.medium};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
+  z-index: ${({ theme }) => theme.zIndex.modal + 1};
 
   ${({ $opened, $isAnimating }) =>
     $opened && !$isAnimating
