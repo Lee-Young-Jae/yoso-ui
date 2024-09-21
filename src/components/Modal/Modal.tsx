@@ -32,7 +32,7 @@ const Modal = ({
   const modalInnerRef = useRef<HTMLDivElement>(null);
   const modalRoot = useRef<HTMLElement | null>(null);
 
-  useScrollLock(opened);
+  useScrollLock(opened && !isAnimating);
 
   const handleHide = () => {
     hide();
@@ -42,7 +42,7 @@ const Modal = ({
     modalRoot.current = document.getElementById("modalRoot");
   }, []);
 
-  return opened ? (
+  return (
     <Portal container={modalRoot.current as HTMLElement}>
       <StyledModal
         onClick={hideOnClickOutside ? handleHide : undefined}
@@ -65,7 +65,7 @@ const Modal = ({
         </StyledModalInner>
       </StyledModal>
     </Portal>
-  ) : null;
+  );
 };
 
 interface ModalHeaderProps {
