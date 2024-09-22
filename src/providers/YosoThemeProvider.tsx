@@ -1,6 +1,7 @@
 import { ThemeProvider as StyledThemeProvider } from "styled-components";
 import defaultTheme, { Theme } from "../styles/theme";
 import { useMemo } from "react";
+import { ToastProvider } from "../components/Toast/ToastProvider";
 
 interface YosoThemeProviderProps {
   theme?: Partial<Theme>;
@@ -28,8 +29,11 @@ const YosoThemeProvider = ({
 
   return (
     <StyledThemeProvider theme={mergedTheme}>
-      {children}
-      <div id="modalRoot" />
+      <ToastProvider>
+        {children}
+        <div id="modalRoot" />
+        <div id="toastRoot" />
+      </ToastProvider>
     </StyledThemeProvider>
   );
 };
