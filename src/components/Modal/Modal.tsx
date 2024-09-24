@@ -17,6 +17,7 @@ import {
   StyledModalHeader,
   StyledModalHideButton,
   StyledModalInner,
+  StyledModalTitle,
 } from "./Modal.styles";
 
 interface ModalProps {
@@ -89,7 +90,7 @@ interface ModalHeaderProps {
 const ModalHeader = ({ children, title }: ModalHeaderProps) => {
   return (
     <StyledModalHeader>
-      <p>{title}</p>
+      <StyledModalTitle>{title}</StyledModalTitle>
       {children}
     </StyledModalHeader>
   );
