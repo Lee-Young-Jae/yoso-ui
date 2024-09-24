@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect, useRef, useCallback, ReactNode } from "react";
 import { SliderContainer, SlidesWrapper } from "./ImageSlider.styles";
 import Slide from "./Slide";

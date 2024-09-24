@@ -1,7 +1,10 @@
+"use client";
+
 import styled from "styled-components";
 import Toast from "./Toast";
 import { Toast as ToastType } from "./Toast.types";
 import { Portal } from "../Portal/Portal";
+import { useEffect, useRef } from "react";
 
 interface ToastContainerProps {
   toasts: ToastType[];
@@ -9,8 +12,18 @@ interface ToastContainerProps {
 }
 
 const ToastContainer = ({ toasts, removeToast }: ToastContainerProps) => {
+  const toastRootRef = useRef<HTMLDivElement>();
+
+  useEffect(() => {
+    toastRootRef.current = document.getElementById(
+      "toastRoot"
+    ) as HTMLDivElement;
+  }, []);
+
+  if (!toastRootRef.current) return null;
+
   return (
-    <Portal container={document.getElementById("toastRoot") as HTMLElement}>
+    <Portal container={toastRootRef.current}>
       <StyledContainer>
         {toasts.map((toast) => (
           <Toast
