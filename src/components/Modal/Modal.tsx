@@ -1,4 +1,10 @@
-import React, { HTMLAttributes, ReactNode, useEffect, useRef } from "react";
+import React, {
+  HTMLAttributes,
+  ReactNode,
+  useEffect,
+  useRef,
+  useId,
+} from "react";
 
 import { Portal } from "../Portal/Portal";
 import { useScrollLock } from "./useScrollLock";
@@ -28,11 +34,14 @@ const Modal = ({
   hide,
   children,
 }: ModalProps) => {
+  const modalId = `modal-${useId()}`;
   const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
   const modalInnerRef = useRef<HTMLDivElement>(null);
   const modalRoot = useRef<HTMLElement | null>(null);
 
-  useScrollLock(opened && !isAnimating);
+  useScrollLock({
+    isLocked: opened,
+  });
 
   const handleHide = () => {
     hide();
@@ -42,9 +51,10 @@ const Modal = ({
     modalRoot.current = document.getElementById("modalRoot");
   }, []);
 
-  return (
+  return opened ? (
     <Portal container={modalRoot.current as HTMLElement}>
       <StyledModal
+        id={modalId}
         onClick={hideOnClickOutside ? handleHide : undefined}
         $opened={opened}
         $isAnimating={isAnimating}
@@ -65,7 +75,7 @@ const Modal = ({
         </StyledModalInner>
       </StyledModal>
     </Portal>
-  );
+  ) : null;
 };
 
 interface ModalHeaderProps {
