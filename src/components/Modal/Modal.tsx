@@ -20,7 +20,7 @@ import {
   StyledModalTitle,
 } from "./Modal.styles";
 
-interface ModalProps {
+export interface ModalProps {
   opened: boolean;
   hideOnClickOutside?: boolean;
   showHideButton?: boolean;
