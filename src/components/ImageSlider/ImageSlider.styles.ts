@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { getRGBA } from "../../utils";
 
 export const SliderContainer = styled.div<{
@@ -63,19 +63,22 @@ export const NavigationContainer = styled.div`
 `;
 
 export const NavButton = styled.button`
-  background: ${({ theme }) => getRGBA(theme.colors.BLACK, 0.3)};
   border: none;
+  background: none;
   border-radius: 50%;
-  width: ${({ theme }) => theme.spacing.small};
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 22px;
+  text-shadow: 0 0 1px ${({ theme }) => theme.colors.BLACK};
 `;
 
 export const PaginationContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  flex: 1;
   position: absolute;
   bottom: 15px;
   width: 100%;
@@ -85,17 +88,27 @@ export const PaginationContainer = styled.div`
 export const Dot = styled.button<{ $isActive: boolean }>`
   cursor: pointer;
   margin: 0 4px;
-  background-color: ${({ $isActive, theme }) =>
-    $isActive ? theme.colors.BLACK : getRGBA(theme.colors.BLACK, 0.3)};
-  border: none;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.3s ease;
-  width: ${({ theme }) => theme.spacing.medium};
-  height: ${({ theme }) => theme.spacing.medium};
   padding: 0;
+  border: none;
+  display: inline-block;
+  height: ${({ theme }) => theme.spacing.medium};
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.BLACK};
+  ${({ $isActive, theme }) =>
+    $isActive
+      ? css`
+          box-shadow: 0 0 1px ${theme.colors.BLACK};
+          background-color: ${theme.colors.WHITE};
+          border-radius: ${theme.spacing.large};
+          width: ${theme.spacing.large};
+        `
+      : css`
+          box-shadow: 0 0 1px ${theme.colors.WHITE};
+          background-color: ${theme.colors.GRAY_600};
+          border-radius: ${theme.spacing.medium};
+          width: ${theme.spacing.medium};
+        `}
+
+  &:focus {
+    outline: none;
   }
 `;
