@@ -31,7 +31,7 @@ export interface Theme {
   };
   fontWeights: {
     regular: 400;
-    bold: 700;
+    bold: 600;
   };
   spacing: {
     small: "4px";
@@ -91,7 +91,7 @@ const defaultTheme: Theme = {
   fontSizes: {
     small: "0.8rem",
     medium: "1rem",
-    large: "1.2rem",
+    large: "1.125rem",
   },
   borderRadius: {
     small: "4px",
@@ -100,7 +100,7 @@ const defaultTheme: Theme = {
   },
   fontWeights: {
     regular: 400,
-    bold: 700,
+    bold: 600,
   },
   spacing: {
     small: "4px",

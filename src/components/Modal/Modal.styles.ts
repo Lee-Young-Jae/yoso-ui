@@ -55,7 +55,6 @@ export const StyledModalInner = styled.div<{
   max-height: calc(100vh - 80px);
   max-width: calc(100vw - 80px);
   min-width: 250px;
-  padding: ${({ theme }) => theme.spacing.medium};
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   z-index: ${({ theme }) => theme.zIndex.modal + 1};
 
@@ -95,7 +94,7 @@ export const StyledModalHideButton = styled.button`
     width: 1px;
     height: 1rem;
     border-radius: 1px;
-    background-color: ${({ theme }) => theme.defaultColor};
+    background-color: ${({ theme }) => theme.colors.BLACK};
   }
 
   &:before {
@@ -107,15 +106,30 @@ export const StyledModalHideButton = styled.button`
 `;
 
 export const StyledModalHeader = styled.div`
-  p {
-    padding: 0;
-    margin: 0;
-  }
+  padding: ${({ theme }) => theme.spacing.xLarge};
+  margin: 0;
+  font-size: ${({ theme }) => theme.fontSizes.large};
+  font-weight: bold;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.GRAY_300};
 `;
 
-export const StyledModalContent = styled.div``;
+export const StyledModalTitle = styled.h2`
+  margin: 0;
+  padding: 0;
+
+  font-size: ${({ theme }) => theme.fontSizes.large};
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  color: ${({ theme }) => theme.colors.BLACK};
+  line-height: 1.5;
+`;
+
+export const StyledModalContent = styled.div`
+  padding: ${({ theme }) => theme.spacing.xLarge};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+`;
 
 export const StyledModalFooter = styled.div`
   display: flex;
   justify-content: flex-end;
+  padding: ${({ theme }) => theme.spacing.xLarge};
 `;
