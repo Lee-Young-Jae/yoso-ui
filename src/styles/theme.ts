@@ -34,16 +34,17 @@ export interface Theme {
     bold: 600;
   };
   spacing: {
-    small: "4px";
-    medium: "8px";
-    large: "16px";
-    xLarge: "24px";
+    small: string;
+    medium: string;
+    large: string;
+    xLarge: string;
   };
 
   borderRadius?: {
     small: string;
     medium: string;
     large: string;
+    xLarge?: string;
   };
   shadows?: {
     small: string;
@@ -97,6 +98,7 @@ const defaultTheme: Theme = {
     small: "4px",
     medium: "8px",
     large: "12px",
+    xLarge: "16px",
   },
   fontWeights: {
     regular: 400,
