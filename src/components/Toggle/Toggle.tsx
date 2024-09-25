@@ -10,6 +10,7 @@ import {
   ToggleSwitch,
   ToggleHandle,
   ToggleLabel,
+  VisuallyHiddenInput,
 } from "./Toggle.styles";
 
 export type ToggleVariant = "solid" | "outline";
@@ -54,8 +55,10 @@ const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         htmlFor={id}
         style={style}
         className={className}
+        aria-checked={checked}
+        role="switch"
       >
-        <input
+        <VisuallyHiddenInput
           ref={ref}
           id={id}
           type="checkbox"
@@ -63,7 +66,6 @@ const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           onChange={onChange}
           disabled={disabled}
           aria-label={ariaLabel}
-          style={{ display: "none" }}
           {...props}
         />
         <ToggleSwitch
@@ -79,5 +81,7 @@ const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
     );
   }
 );
+
+Toggle.displayName = "Toggle";
 
 export default Toggle;
