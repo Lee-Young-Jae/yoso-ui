@@ -2,6 +2,18 @@ import styled, { css } from "styled-components";
 import { ToggleSize, ToggleVariant } from "./Toggle";
 import { getRGBA } from "../../utils";
 
+const HANDLE_SIZES = {
+  small: "12px",
+  medium: "16px",
+  large: "20px",
+} as const;
+
+const HANDLE_OFFSETS = {
+  small: "4px",
+  medium: "4px",
+  large: "5px",
+} as const;
+
 export const ToggleContainer = styled.label<{ $disabled?: boolean }>`
   display: inline-flex;
   align-items: center;
@@ -63,33 +75,16 @@ export const ToggleSwitch = styled.span<{
   margin-right: 8px;
 `;
 
-const getToggleHandleSize = ($size: ToggleSize) => {
-  switch ($size) {
-    case "small":
-      return css`
-        width: 12px;
-        height: 12px;
-      `;
-    case "medium":
-      return css`
-        width: 16px;
-        height: 16px;
-      `;
-    case "large":
-      return css`
-        width: 20px;
-        height: 20px;
-      `;
-  }
-};
+const getToggleHandleSize = ($size: ToggleSize) => `
+  width: ${HANDLE_SIZES[$size]}px;
+  height: ${HANDLE_SIZES[$size]}px;
+`;
 
 const getToggleHandleOffset = ($size: ToggleSize, $checked: boolean) => {
-  const offset = $size === "small" ? "4px" : $size === "medium" ? "4px" : "5px";
-  const handleSize = $size === "small" ? 12 : $size === "medium" ? 16 : 20;
   if ($checked) {
-    return `calc(100% - ${offset} - ${handleSize}px)`;
+    return `calc(100% - ${HANDLE_SIZES[$size]}px - ${HANDLE_OFFSETS[$size]})`;
   } else {
-    return offset;
+    return HANDLE_OFFSETS[$size];
   }
 };
 
