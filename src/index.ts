@@ -5,5 +5,6 @@ export { default as YosoThemeProvider } from "./providers/YosoThemeProvider";
 export { default as defaultTheme } from "./styles/theme";
 export { default as useToast } from "./components/Toast/useToast";
 export { default as ImageSlider } from "./components/ImageSlider/ImageSlider";
+export { default as Toggle } from "./components/Toggle/Toggle";
 
 export type { Theme } from "./styles/theme";
