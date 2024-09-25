@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { MouseEventHandler, ReactElement, ReactNode } from "react";
 import styled, { css } from "styled-components";
 
 type Variant = "primary" | "secondary" | "ghost" | "danger" | "default";
@@ -7,7 +7,7 @@ type Radius = "none" | "small" | "medium" | "large";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   variant?: Variant;
   size?: Size;
   radius?: Radius;
@@ -180,8 +180,10 @@ const Button = ({
   return (
     <StyledButton
       onClick={onClick}
-      $variant={variant}
       disabled={disabled}
+      aria-disabled={disabled}
+      type="button"
+      $variant={variant}
       $fullWidth={fullWidth}
       $size={size}
       $radius={radius}
