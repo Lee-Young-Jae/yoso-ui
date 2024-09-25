@@ -1,5 +1,39 @@
 import styled, { css } from "styled-components";
-import { ButtonProps, Variant } from "./Button";
+import { ButtonProps } from "./Button";
+
+const sizeStyles = {
+  xsmall: css`
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    padding: ${({ theme }) => `${theme.spacing.small} ${theme.spacing.medium}`};
+  `,
+  small: css`
+    font-size: ${({ theme }) => theme.fontSizes.small};
+    padding: ${({ theme }) => `${theme.spacing.medium} ${theme.spacing.large}`};
+  `,
+  medium: css`
+    font-size: ${({ theme }) => theme.fontSizes.medium};
+    padding: ${({ theme }) => `${theme.spacing.medium} ${theme.spacing.large}`};
+  `,
+  large: css`
+    font-size: ${({ theme }) => theme.fontSizes.large};
+    padding: ${({ theme }) => `${theme.spacing.large} ${theme.spacing.xLarge}`};
+  `,
+};
+
+const radiusStyles = {
+  none: css`
+    border-radius: 0;
+  `,
+  small: css`
+    border-radius: ${({ theme }) => theme.borderRadius.small};
+  `,
+  medium: css`
+    border-radius: ${({ theme }) => theme.borderRadius.medium};
+  `,
+  large: css`
+    border-radius: ${({ theme }) => theme.borderRadius.large};
+  `,
+};
 
 export const StyledButton = styled.button<{
   $variant: ButtonProps["variant"];
@@ -31,72 +65,30 @@ export const StyledButton = styled.button<{
     `}
 
   // 사이즈
-  ${({ $size, theme }) => {
-    switch ($size) {
-      case "xsmall":
-        return css`
-          font-size: ${theme.fontSizes.small};
-          padding: ${theme.spacing.small} ${theme.spacing.medium};
-        `;
-      case "small":
-        return css`
-          font-size: ${theme.fontSizes.small};
-          padding: ${theme.spacing.medium} ${theme.spacing.large};
-        `;
-      case "large":
-        return css`
-          font-size: ${theme.fontSizes.large};
-          padding: ${theme.spacing.large} ${theme.spacing.xLarge};
-        `;
-      default: // medium
-        return css`
-          font-size: ${theme.fontSizes.medium};
-          padding: ${theme.spacing.medium} ${theme.spacing.large};
-        `;
-    }
-  }}
+  ${({ $size }) => sizeStyles[$size || "medium"]}
 
   // 라디우스
-  ${({ $radius, theme }) => {
-    switch ($radius) {
-      case "none":
-        return css`
-          border-radius: 0;
-        `;
-      case "small":
-        return css`
-          border-radius: ${theme.borderRadius.small};
-        `;
-      case "large":
-        return css`
-          border-radius: ${theme.borderRadius.large};
-        `;
-      default: // medium
-        return css`
-          border-radius: ${theme.borderRadius.medium};
-        `;
-    }
-  }}
+  ${({ $radius }) => radiusStyles[$radius || "medium"]}
 
   // 색상
   ${({ $variant, $outline, theme, $color }) => {
-    const getColor = (variant: Variant | undefined) => {
-      if ($color) return $color;
-
-      switch (variant) {
-        case "secondary":
-          return theme.colors.GRAY_500;
-        case "danger":
-          return theme.colors.RED_500;
-        case "ghost":
-        case "default":
-          return theme.defaultColor;
-        default:
-          return theme.defaultColor;
-      }
+    const variantColors = {
+      primary: theme.colors.BLUE_500,
+      secondary: theme.colors.GRAY_500,
+      danger: theme.colors.RED_500,
+      ghost: theme.colors.GRAY_600,
+      default: theme.defaultColor,
     };
 
-    const color = getColor($variant);
+    const color = $color || variantColors[$variant || "default"];
+    const hoverColors = {
+      primary: theme.colors.BLUE_700,
+      secondary: theme.colors.GRAY_600,
+      danger: theme.colors.RED_700,
+      ghost: theme.colors.GRAY_300,
+      default: theme.defaultColor,
+    };
+    const hoverColor = hoverColors[$variant || "default"];
 
     if ($outline) {
       return css`
@@ -123,12 +115,8 @@ export const StyledButton = styled.button<{
         background-color: ${color};
         border-color: ${color};
         &:hover:not(:disabled) {
-          background-color: ${theme.colors[
-            `${$variant?.toUpperCase()}_700` as keyof typeof theme.colors
-          ] || color};
-          border-color: ${theme.colors[
-            `${$variant?.toUpperCase()}_700` as keyof typeof theme.colors
-          ] || color};
+          background-color: ${hoverColor};
+          border-color: ${hoverColor};
         }
       `;
     }
