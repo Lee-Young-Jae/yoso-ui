@@ -1,4 +1,4 @@
-import { MouseEventHandler, ReactElement, ReactNode } from "react";
+import { forwardRef, MouseEventHandler, ReactElement, ReactNode } from "react";
 import { StyledButton } from "./Button.styles";
 
 export type Variant = "primary" | "secondary" | "ghost" | "danger" | "default";
@@ -20,43 +20,49 @@ export interface ButtonProps
   color?: string;
 }
 
-const Button = ({
-  children,
-  onClick,
-  variant = "default",
-  disabled = false,
-  fullWidth = false,
-  size = "medium",
-  radius = "medium",
-  outline = false,
-  leftIcon,
-  rightIcon,
-  color,
-  className,
-  style,
-  ...props
-}: ButtonProps) => {
-  return (
-    <StyledButton
-      onClick={onClick}
-      disabled={disabled}
-      aria-disabled={disabled}
-      type="button"
-      $variant={variant}
-      $fullWidth={fullWidth}
-      $size={size}
-      $radius={radius}
-      $outline={outline}
-      $color={color}
-      className={className}
-      style={style}
-      {...props}
-    >
-      {leftIcon && leftIcon}
-      {children}
-      {rightIcon && rightIcon}
-    </StyledButton>
-  );
-};
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      children,
+      onClick,
+      variant = "default",
+      disabled = false,
+      fullWidth = false,
+      size = "medium",
+      radius = "medium",
+      outline = false,
+      leftIcon,
+      rightIcon,
+      color,
+      className,
+      style,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <StyledButton
+        onClick={onClick}
+        disabled={disabled}
+        aria-disabled={disabled}
+        type="button"
+        $variant={variant}
+        $fullWidth={fullWidth}
+        $size={size}
+        $radius={radius}
+        $outline={outline}
+        $color={color}
+        className={className}
+        style={style}
+        {...props}
+        ref={ref}
+      >
+        {leftIcon && leftIcon}
+        {children}
+        {rightIcon && rightIcon}
+      </StyledButton>
+    );
+  }
+);
 
 export default Button;
