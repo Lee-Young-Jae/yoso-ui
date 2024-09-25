@@ -74,7 +74,7 @@ const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           $size={size}
           aria-hidden="true"
         >
-          <ToggleHandle $checked={!!checked} $size={size} $variant={variant} />
+          <ToggleHandle $checked={checked} $size={size} $variant={variant} />
         </ToggleSwitch>
         {showText && <ToggleLabel>{checked ? onText : offText}</ToggleLabel>}
       </ToggleContainer>
