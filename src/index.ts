@@ -7,5 +7,6 @@ export { default as useToast } from "./components/Toast/useToast";
 export { default as ImageSlider } from "./components/ImageSlider/ImageSlider";
 export { default as Toggle } from "./components/Toggle/Toggle";
 export { default as Input } from "./components/Input/Input";
+export { default as Highlight } from "./components/Typography/Hightlight/Hightlight";
 
 export type { Theme } from "./styles/theme";
