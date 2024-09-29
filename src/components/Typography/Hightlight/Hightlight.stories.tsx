@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Highlight from "./Hightlight";
 
 const meta = {
-  title: "Components/Typography/Highlight",
+  title: "Typography/Highlight",
   component: Highlight,
   tags: ["autodocs"],
   parameters: {

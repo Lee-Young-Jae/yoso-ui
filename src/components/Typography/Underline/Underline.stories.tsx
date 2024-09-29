@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import Underline from "./Underline";
 
 const meta = {
-  title: "Components/Typography/Underline",
+  title: "Typography/Underline",
   component: Underline,
   tags: ["autodocs"],
   parameters: {
