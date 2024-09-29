@@ -1,26 +1,26 @@
 import { Meta, StoryObj } from "@storybook/react";
-import Highlight from "./Hightlight";
+import Underline from "./Underline";
 
 const meta = {
-  title: "Typography/Highlight",
-  component: Highlight,
+  title: "Typography/Underline",
+  component: Underline,
   tags: ["autodocs"],
   parameters: {
     docs: {
       description: {
         component: `
-\`Highlight\` 컴포넌트는 텍스트를 강조할 때 사용합니다.
+\`Underline\` 컴포넌트는 텍스트를 강조할 때 사용합니다.
         `,
       },
     },
   },
-} as Meta<typeof Highlight>;
+} as Meta<typeof Underline>;
 
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: "Highlight",
+    children: "Underline",
   },
   argTypes: {
     children: {
@@ -38,13 +38,7 @@ export const Default: Story = {
           detail: "string",
         },
       },
-      description: "텍스트의 색상을 지정합니다.",
-    },
-    offsetY: {
-      control: {
-        type: "number",
-      },
-      description: "텍스트의 상단 여백을 지정합니다.",
+      description: "밑줄의 색상을 지정합니다.",
     },
   },
 };
