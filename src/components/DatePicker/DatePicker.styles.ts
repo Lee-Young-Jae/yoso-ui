@@ -22,9 +22,45 @@ export const MonthYear = styled.div`
   font-weight: bold;
 `;
 
-export const NavButton = styled.button`
+export const NavLeftButton = styled.button`
   background: none;
   border: none;
+
+  &::before {
+    content: "";
+    border: solid ${({ theme }) => theme.colors.GRAY_700};
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(135deg);
+  }
+
+  cursor: pointer;
+  color: ${({ theme }) => theme.colors.GRAY_700};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.BLACK};
+  }
+
+  &:disabled {
+    color: ${({ theme }) => theme.colors.GRAY_300};
+    cursor: not-allowed;
+  }
+`;
+
+export const NavRightButton = styled.button`
+  background: none;
+  border: none;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
+  &::before {
+    content: "";
+    border: solid ${({ theme }) => theme.colors.GRAY_700};
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+  }
+
   cursor: pointer;
   color: ${({ theme }) => theme.colors.GRAY_700};
 

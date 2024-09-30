@@ -3,12 +3,11 @@ import {
   DatePickerContainer,
   Header,
   MonthYear,
-  NavButton,
+  NavLeftButton,
+  NavRightButton,
 } from "./DatePicker.styles";
 import useDatePicker from "./useDatePicker";
 import Month from "./Month";
-
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const DatePicker = (props: DatePickerProps) => {
   const {
@@ -31,13 +30,9 @@ const DatePicker = (props: DatePickerProps) => {
   return (
     <DatePickerContainer className={props.className} style={props.style}>
       <Header>
-        <NavButton onClick={handlePrevMonth}>
-          <FiChevronLeft />
-        </NavButton>
+        <NavLeftButton onClick={handlePrevMonth} />
         <MonthYear>{monthName}</MonthYear>
-        <NavButton onClick={handleNextMonth}>
-          <FiChevronRight />
-        </NavButton>
+        <NavRightButton onClick={handleNextMonth} />
       </Header>
       <Month
         year={currentYear}
