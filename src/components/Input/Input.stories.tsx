@@ -26,7 +26,7 @@ const meta: Meta<InputProps> = {
 ### 사용법
 
 \`\`\`tsx
-import Input from './Input';
+import { Input } from 'yoso-ui';
 import { FiMail } from 'react-icons/fi';
 
 <Input
