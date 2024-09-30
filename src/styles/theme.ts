@@ -45,6 +45,7 @@ export interface Theme {
     medium: string;
     large: string;
     xLarge?: string;
+    round?: string;
   };
   shadows?: {
     small: string;
@@ -99,6 +100,7 @@ const defaultTheme: Theme = {
     medium: "8px",
     large: "12px",
     xLarge: "16px",
+    round: "50%",
   },
   fontWeights: {
     regular: 400,
