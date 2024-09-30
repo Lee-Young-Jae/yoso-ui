@@ -20,7 +20,7 @@ export default {
 **사용법**
 
 \`\`\`tsx
-import ImageSlider from './ImageSlider';
+import { ImageSlider } from 'yoso-ui';
 
 const slides = [
   { imageUrl: 'https://example.com/image1.jpg', altText: '이미지 1' },

@@ -23,7 +23,7 @@ export default {
 **사용법**
 
 \`\`\`tsx
-import { useToast } from './useToast';
+import { useToast } from 'yoso-ui';
 
 const { addToast, removeToast } = useToast();
 \`\`\`
