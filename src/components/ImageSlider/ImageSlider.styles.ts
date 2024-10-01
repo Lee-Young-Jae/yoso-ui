@@ -2,16 +2,18 @@ import styled, { css } from "styled-components";
 import { getRGBA } from "../../utils";
 
 export const SliderContainer = styled.div<{
-  $width: number;
-  $height: number;
+  $width: number | string;
+  $height: number | string;
 }>`
   position: relative;
   overflow: hidden;
   touch-action: pan-y; // 가로 슬라이드 방지
   user-select: none; // 드래그 방지
   -webkit-user-drag: none; // Safari 이미지 드래그 방지
-  width: ${({ $width }) => $width}px;
-  height: ${({ $height }) => $height}px;
+  width: ${({ $width }) =>
+    typeof $width === "number" ? `${$width}px` : $width};
+  height: ${({ $height }) =>
+    typeof $height === "number" ? `${$height}px` : $height};
 `;
 
 export const SlidesWrapper = styled.div<{
@@ -33,11 +35,12 @@ export const SlideContainer = styled.div`
 export const SlideImage = styled.img<{
   $isLoaded: boolean;
   $objectFit: "cover" | "contain" | "fill" | "none" | "scale-down";
-  width: number;
-  height: number;
+  width: number | string;
+  height: number | string;
 }>`
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
+  width: ${({ width }) => (typeof width === "number" ? `${width}px` : width)};
+  height: ${({ height }) =>
+    typeof height === "number" ? `${height}px` : height};
   display: block;
   opacity: ${({ $isLoaded }) => ($isLoaded ? 1 : 0)};
   transition: opacity 0.5s ease-in-out;
@@ -45,7 +48,7 @@ export const SlideImage = styled.img<{
   object-fit: ${({ $objectFit }) => $objectFit};
 `;
 
-export const Placeholder = styled.div<{ $width: number; $height: number }>`
+export const Placeholder = styled.div`
   width: 100%;
   height: 10px;
   background-color: ${({ theme }) => getRGBA(theme.colors.BLACK, 0.1)};

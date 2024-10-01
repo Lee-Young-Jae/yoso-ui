@@ -13,8 +13,8 @@ export interface SlideItem {
 
 export interface ImageSliderProps {
   slides: SlideItem[];
-  width: number;
-  height: number;
+  width: number | string;
+  height: number | string;
   objectFit?: "cover" | "contain" | "fill" | "none" | "scale-down";
   autoPlay?: boolean;
   autoPlayInterval?: number;
@@ -29,7 +29,7 @@ export interface ImageSliderProps {
 
 const ImageSlider = ({
   slides,
-  width,
+  width = "100%",
   height,
   objectFit = "cover",
   autoPlay = false,

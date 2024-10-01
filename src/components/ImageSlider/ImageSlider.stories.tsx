@@ -5,6 +5,26 @@ export default {
   title: "Components/ImageSlider",
   component: ImageSlider,
   tags: ["autodocs"],
+  argTypes: {
+    width: {
+      control: {
+        type: "number",
+      },
+      description:
+        "슬라이더의 너비를 지정합니다. `string|number` 타입으로 지정할 수 있습니다.",
+    },
+
+    height: {
+      control: {
+        type: "number",
+      },
+    },
+    autoPlayInterval: {
+      control: {
+        type: "number",
+      },
+    },
+  },
   parameters: {
     docs: {
       description: {
@@ -30,7 +50,7 @@ const slides = [
 
 <ImageSlider
   slides={slides}
-  width={800}
+  width={"100%"}
   height={400}
   autoPlay={true}
   loop={true}
@@ -62,7 +82,7 @@ const Template: StoryFn<ImageSliderProps> = (args) => <ImageSlider {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   slides,
-  width: 400,
+  width: "100%",
   height: 400,
 };
 Default.storyName = "기본 이미지 슬라이더";
