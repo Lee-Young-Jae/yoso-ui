@@ -6,8 +6,8 @@ import { SlideItem } from "./ImageSlider";
 interface SlideProps {
   slide: SlideItem;
   isActive: boolean;
-  width: number;
-  height: number;
+  width: number | string;
+  height: number | string;
   objectFit: "cover" | "contain" | "fill" | "none" | "scale-down";
 }
 
@@ -46,7 +46,7 @@ const Slide = ({ slide, isActive, width, height, objectFit }: SlideProps) => {
   }, []);
   return (
     <SlideContainer aria-hidden={!isActive}>
-      {!isLoaded && <Placeholder $width={width} $height={height} />}
+      {!isLoaded && <Placeholder />}
       <SlideImage
         ref={imgRef}
         data-src={slide.imageUrl}
