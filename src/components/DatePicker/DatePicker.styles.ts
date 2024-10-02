@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { getRGBA } from "../../utils";
 
 export const DatePickerContainer = styled.div`
@@ -94,12 +94,13 @@ export const DaysGrid = styled.div`
 export const DayButton = styled.button<{
   $isSelected?: boolean;
   $isInRange?: boolean;
-  $isInHoveredRange?: boolean;
   $isToday?: boolean;
-  $isHovered?: boolean;
   $isStartDay?: boolean;
   $isEndDay?: boolean;
+  $isStartOfRow?: boolean;
+  $isEndOfRow?: boolean;
   $day?: number;
+  disabled?: boolean;
 }>`
   position: relative;
   width: calc(100% / 7);
@@ -109,58 +110,74 @@ export const DayButton = styled.button<{
   margin: 0;
   background: transparent;
   cursor: pointer;
-  color: none;
 
-  &::before {
-    content: "${({ $day }) => $day || ""}";
+  color: ${({ $isSelected, $isToday, theme }) =>
+    $isSelected
+      ? theme.colors.WHITE
+      : $isToday
+      ? theme.colors.BLUE_500
+      : theme.colors.BLACK};
 
-    // 부모가 disabled일 때, 자식도 disabled로 만들기
+  ${({ $isSelected, $isInRange, $isStartDay, $isEndDay, theme }) =>
+    $isStartDay || $isEndDay
+      ? css`
+          background-color: ${getRGBA(theme.defaultColor, 0.5)};
+        `
+      : ($isSelected || $isInRange) &&
+        css`
+          background-color: ${$isSelected
+            ? theme.defaultColor
+            : getRGBA(theme.defaultColor, 0.3)};
+        `}
 
-    color: ${({ theme }) => theme.colors.BLACK};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 100%;
-    height: 35px;
-    top: calc(50% - 17.5px);
-    left: 0;
+  ${({
+    $isStartDay,
+    $isEndDay,
+    $isStartOfRow,
+    $isEndOfRow,
+    $isInRange,
+    theme,
+  }) =>
+    ($isStartDay || $isEndDay || $isInRange) &&
+    css`
+      border-radius: ${() => {
+        if ($isStartDay && $isEndDay) {
+          return theme.borderRadius.medium;
+        }
 
-    border-radius: ${({
-      theme,
-      $isStartDay,
-      $isEndDay,
-      $isSelected,
-      $isHovered,
-    }) =>
-      $isSelected || $isHovered
-        ? theme.borderRadius.medium
-        : `${$isStartDay ? theme.borderRadius.medium : 0} ${
-            $isEndDay ? theme.borderRadius.medium : 0
-          } ${$isEndDay ? theme.borderRadius.medium : 0} ${
-            $isStartDay ? theme.borderRadius.medium : 0
-          }`};
+        return `
+          ${
+            $isStartDay || ($isStartOfRow && $isInRange)
+              ? theme.borderRadius.medium
+              : 0
+          }
+          ${
+            $isEndDay || ($isEndOfRow && $isInRange)
+              ? theme.borderRadius.medium
+              : 0
+          }
+          ${
+            $isEndDay || ($isEndOfRow && $isInRange)
+              ? theme.borderRadius.medium
+              : 0
+          }
+          ${
+            $isStartDay || ($isStartOfRow && $isInRange)
+              ? theme.borderRadius.medium
+              : 0
+          }
+        `;
+      }};
+    `}
 
-    background: ${({
-      $isSelected,
-      $isInRange,
-      $isInHoveredRange,
-      $isHovered,
-      theme,
-    }) =>
-      $isSelected || $isHovered
-        ? getRGBA(theme.defaultColor, 0.3)
-        : $isInRange
-        ? getRGBA(theme.defaultColor, 0.2)
-        : $isInHoveredRange
-        ? getRGBA(theme.defaultColor, 0.1)
-        : "transparent"};
-  }
+  ${({ $isSelected }) =>
+    $isSelected &&
+    css`
+      border-radius: ${({ theme }) => theme.borderRadius.medium};
+    `}
 
   &:disabled {
-    &::before {
-      color: ${({ theme }) => theme.colors.GRAY_300};
-    }
+    color: ${({ theme }) => theme.colors.GRAY_300};
     cursor: not-allowed;
   }
 `;

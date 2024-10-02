@@ -15,6 +15,7 @@ const useDatePicker = ({
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
   const [currentYear, setCurrentYear] = useState(today.getFullYear());
   const [hoveredDate, setHoveredDate] = useState<Date | null>(null);
+  const [focusedDate, setFocusedDate] = useState<Date>(today);
 
   const handlePrevMonth = () => {
     if (currentMonth === 0) {
@@ -75,7 +76,9 @@ const useDatePicker = ({
   return {
     selectedDate,
     currentMonth,
+    setCurrentMonth,
     currentYear,
+    setCurrentYear,
     handlePrevMonth,
     handleNextMonth,
     handleDateSelect,
@@ -83,6 +86,8 @@ const useDatePicker = ({
     isSameDay,
     hoveredDate,
     setHoveredDate,
+    focusedDate,
+    setFocusedDate,
   };
 };
 
