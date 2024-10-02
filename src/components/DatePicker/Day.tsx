@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { DayButton } from "./DatePicker.styles";
 import { DateRange } from "./DatePicker.types";
 
@@ -10,6 +11,8 @@ interface DayProps {
   isSameDay: (d1: Date, d2: Date) => boolean;
   hoveredDate: Date | null;
   setHoveredDate: (date: Date | null) => void;
+  focusedDate: Date;
+  setFocusedDate: (date: Date) => void;
 }
 
 const Day = ({
@@ -21,6 +24,8 @@ const Day = ({
   isSameDay,
   hoveredDate,
   setHoveredDate,
+  focusedDate,
+  setFocusedDate,
 }: DayProps) => {
   if (!date) {
     return <DayButton disabled />;
@@ -29,50 +34,63 @@ const Day = ({
   const today = new Date();
   const isToday = isSameDay(date, today);
   const isSelected = selectedDate && isSameDay(date, selectedDate);
-  const isInRange =
-    selectedRange &&
-    selectedRange.startDate &&
-    selectedRange.endDate &&
-    date >= selectedRange.startDate &&
-    date <= selectedRange.endDate;
-  const isStartDay =
-    selectedRange?.startDate && isSameDay(date, selectedRange.startDate);
-  const isEndDay =
-    selectedRange?.endDate && isSameDay(date, selectedRange.endDate);
 
-  const isHovered = hoveredDate && isSameDay(date, hoveredDate);
-  let isInHoveredRange = false;
+  let rangeStart = selectedRange?.startDate;
+  let rangeEnd = selectedRange?.endDate;
 
-  if (
-    selectedRange?.startDate &&
-    !selectedRange.endDate &&
-    hoveredDate &&
-    !isSameDay(selectedRange.startDate, hoveredDate)
-  ) {
-    const start = selectedRange.startDate;
-    const end = hoveredDate;
-    const [rangeStart, rangeEnd] = start < end ? [start, end] : [end, start];
+  if (rangeStart && rangeEnd && rangeStart > rangeEnd) {
+    [rangeStart, rangeEnd] = [rangeEnd, rangeStart];
+  } else if (rangeStart && !rangeEnd && (hoveredDate || focusedDate)) {
+    rangeEnd = hoveredDate || focusedDate;
 
-    if (date >= rangeStart && date <= rangeEnd) {
-      isInHoveredRange = true;
+    if (rangeStart > rangeEnd) {
+      [rangeStart, rangeEnd] = [rangeEnd, rangeStart];
     }
   }
+
+  const isInRange =
+    rangeStart && rangeEnd && date >= rangeStart && date <= rangeEnd;
+  const isStartDay = rangeStart && isSameDay(date, rangeStart);
+  const isEndDay = rangeEnd && isSameDay(date, rangeEnd);
+
+  const isFocused = focusedDate && isSameDay(date, focusedDate);
   const disabled = isDateDisabled(date);
+
+  const dayOfWeek = date.getDay();
+  const isStartOfRow = dayOfWeek === 0;
+  const isEndOfRow = dayOfWeek === 6;
+
+  const dayRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isFocused && dayRef.current) {
+      dayRef.current.focus();
+    }
+  }, [isFocused]);
 
   return (
     <DayButton
+      ref={dayRef}
       $isSelected={!!isSelected}
       $isInRange={!!isInRange}
-      $isInHoveredRange={!!isInHoveredRange}
       $isToday={!!isToday}
-      $isHovered={!!isHovered}
       $isStartDay={!!isStartDay}
       $isEndDay={!!isEndDay}
+      $isStartOfRow={isStartOfRow}
+      $isEndOfRow={isEndOfRow}
       $day={date.getDate()}
-      onClick={() => onDateSelect(date)}
+      onFocus={() => setFocusedDate(date)}
+      onClick={() => {
+        onDateSelect(date);
+        setFocusedDate(date);
+      }}
       onMouseEnter={() => setHoveredDate(date)}
       onMouseLeave={() => setHoveredDate(null)}
       disabled={disabled}
+      tabIndex={isFocused ? 0 : -1}
+      role="gridcell"
+      aria-label={date.toDateString()}
+      aria-selected={!!isSelected}
     >
       {date.getDate()}
     </DayButton>
