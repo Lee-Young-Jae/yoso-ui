@@ -13,6 +13,8 @@ interface MonthProps {
   hoveredDate: Date | null;
   setHoveredDate: (date: Date | null) => void;
   locale?: string;
+  focusedDate: Date;
+  setFocusedDate: (date: Date) => void;
 }
 
 const Month = ({
@@ -25,6 +27,8 @@ const Month = ({
   isSameDay,
   hoveredDate,
   setHoveredDate,
+  focusedDate,
+  setFocusedDate,
   locale = "default",
 }: MonthProps) => {
   const firstDayOfMonth = new Date(year, month, 1);
@@ -46,7 +50,7 @@ const Month = ({
   }
 
   return (
-    <>
+    <div role="grid" aria-labelledby={`${month}-${year}`}>
       <Weekdays>
         {weekdays.map((weekday) => (
           <Weekday key={weekday}>{weekday}</Weekday>
@@ -64,10 +68,12 @@ const Month = ({
             isSameDay={isSameDay}
             hoveredDate={hoveredDate}
             setHoveredDate={setHoveredDate}
+            focusedDate={focusedDate}
+            setFocusedDate={setFocusedDate}
           />
         ))}
       </DaysGrid>
-    </>
+    </div>
   );
 };
 
