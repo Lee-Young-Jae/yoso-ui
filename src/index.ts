@@ -10,6 +10,7 @@ export { default as Input } from "./components/Input/Input";
 export { default as Highlight } from "./components/Typography/Hightlight/Hightlight";
 export { default as Underline } from "./components/Typography/Underline/Underline";
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
+export { default as Checkbox } from "./components/Checkbox/Checkbox";
 
 export type { Theme } from "./styles/theme";
 export type { DateRange } from "./components/DatePicker/DatePicker.types";
