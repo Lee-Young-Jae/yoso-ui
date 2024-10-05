@@ -1,5 +1,6 @@
 import {
   createContext,
+  HTMLAttributes,
   ReactNode,
   useContext,
   useEffect,
@@ -50,25 +51,8 @@ export const useAccordionDispatch = () => {
   return context;
 };
 
-// export interface AccordionSingleProps {
-//   children: ReactNode;
-//   multiple?: false;
-//   defaultValue?: string;
-//   value?: string;
-//   onChange?: (value: string) => void;
-//   style?: React.CSSProperties;
-//   className?: string;
-// }
-
-// export interface AccordionMultipleProps {
-//   children: ReactNode;
-//   multiple: true;
-//   defaultValue?: string[];
-//   value?: string[];
-//   onChange?: (value: string[]) => void;
-// }
-
-export interface AccordionProps<T extends string | string[]> {
+export interface AccordionProps<T extends string | string[]>
+  extends Omit<HTMLAttributes<HTMLDivElement>, "onChange"> {
   children: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
@@ -86,6 +70,7 @@ const Accordion = <T extends string | string[]>({
   onChange,
   style,
   className,
+  ...props
 }: AccordionProps<T>) => {
   const [activeValues, setActiveValues] = useState<string[]>(
     multiple
@@ -127,7 +112,7 @@ const Accordion = <T extends string | string[]>({
       value={{ activeValues: currentValues, multiple }}
     >
       <AccordionDispatch.Provider value={{ toggleItem }}>
-        <AccordionContainer className={className} style={style}>
+        <AccordionContainer className={className} style={style} {...props}>
           {children}
         </AccordionContainer>
       </AccordionDispatch.Provider>
@@ -135,7 +120,7 @@ const Accordion = <T extends string | string[]>({
   );
 };
 
-interface AccordionItemProps {
+interface AccordionItemProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   value: string;
   className?: string;
@@ -163,17 +148,18 @@ const AccordionItem = ({
   value,
   className,
   style,
+  ...props
 }: AccordionItemProps) => {
   return (
     <AccordionItemContext.Provider value={{ value }}>
-      <AccordionItemContainer className={className} style={style}>
+      <AccordionItemContainer className={className} style={style} {...props}>
         {children}
       </AccordionItemContainer>
     </AccordionItemContext.Provider>
   );
 };
 
-interface AccordionHeaderProps {
+interface AccordionHeaderProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
@@ -192,6 +178,7 @@ const AccordionHeader = ({
   children,
   className,
   style,
+  ...props
 }: AccordionHeaderProps) => {
   const { activeValues, toggleItem, value } = (() => {
     const { value } = useAccordionItem();
@@ -212,6 +199,7 @@ const AccordionHeader = ({
       role="button"
       className={className}
       style={style}
+      {...props}
     >
       {children}
       <Icon viewBox="0 0 24 24" $expanded={isExpanded}>
@@ -221,7 +209,7 @@ const AccordionHeader = ({
   );
 };
 
-interface AccordionContentProps {
+interface AccordionContentProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
@@ -231,6 +219,7 @@ const AccordionContent = ({
   children,
   className,
   style,
+  ...props
 }: AccordionContentProps) => {
   const { activeValues } = useAccordion();
   const { value } = useAccordionItem();
@@ -260,6 +249,7 @@ const AccordionContent = ({
       className={className}
       style={style}
       ref={contentRef}
+      {...props}
     >
       {children}
     </AccordionContentPanel>
