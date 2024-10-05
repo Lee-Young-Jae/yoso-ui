@@ -9,6 +9,16 @@
     "dist",
     "src"
   ],
+  "keywords": [
+    "react",
+    "ui",
+    "component",
+    "library",
+    "design",
+    "system",
+    "yoso",
+    "yoso-ui"
+  ],
   "main": "dist/index.js",
   "exports": {
     ".": {
