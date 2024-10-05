@@ -50,31 +50,35 @@ export const useAccordionDispatch = () => {
   return context;
 };
 
-export interface AccordionSingleProps {
-  children: ReactNode;
-  multiple?: false;
-  defaultValue?: string;
-  value?: string;
-  onChange?: (value: string) => void;
-  style?: React.CSSProperties;
-  className?: string;
-}
+// export interface AccordionSingleProps {
+//   children: ReactNode;
+//   multiple?: false;
+//   defaultValue?: string;
+//   value?: string;
+//   onChange?: (value: string) => void;
+//   style?: React.CSSProperties;
+//   className?: string;
+// }
 
-export interface AccordionMultipleProps {
-  children: ReactNode;
-  multiple: true;
-  defaultValue?: string[];
-  value?: string[];
-  onChange?: (value: string[]) => void;
-}
+// export interface AccordionMultipleProps {
+//   children: ReactNode;
+//   multiple: true;
+//   defaultValue?: string[];
+//   value?: string[];
+//   onChange?: (value: string[]) => void;
+// }
 
-export type AccordionProps = (AccordionSingleProps | AccordionMultipleProps) & {
+export interface AccordionProps<T extends string | string[]> {
   children: React.ReactNode;
   style?: React.CSSProperties;
   className?: string;
-};
+  multiple?: boolean;
+  defaultValue?: T;
+  value?: T;
+  onChange?: (value: T) => void;
+}
 
-const Accordion = ({
+const Accordion = <T extends string | string[]>({
   children,
   multiple = false,
   defaultValue,
@@ -82,7 +86,7 @@ const Accordion = ({
   onChange,
   style,
   className,
-}: AccordionProps) => {
+}: AccordionProps<T>) => {
   const [activeValues, setActiveValues] = useState<string[]>(
     multiple
       ? (defaultValue as string[]) ?? []
@@ -115,11 +119,7 @@ const Accordion = ({
     }
 
     if (onChange) {
-      if (multiple) {
-        (onChange as (value: string[]) => void)(newValues);
-      } else {
-        (onChange as (value: string) => void)(newValues[0] ?? "");
-      }
+      onChange(multiple ? (newValues as T) : ((newValues[0] ?? "") as T));
     }
   };
   return (
@@ -137,21 +137,44 @@ const Accordion = ({
 
 interface AccordionItemProps {
   children: ReactNode;
+  value: string;
   className?: string;
   style?: React.CSSProperties;
 }
 
-const AccordionItem = ({ children, className, style }: AccordionItemProps) => {
+interface AccordionItemContextProps {
+  value: string;
+}
+
+const AccordionItemContext = createContext<AccordionItemContextProps | null>(
+  null
+);
+
+const useAccordionItem = () => {
+  const context = useContext(AccordionItemContext);
+  if (!context) {
+    throw new Error("useAccordionItem must be used within AccordionItem");
+  }
+  return context;
+};
+
+const AccordionItem = ({
+  children,
+  value,
+  className,
+  style,
+}: AccordionItemProps) => {
   return (
-    <AccordionItemContainer className={className} style={style}>
-      {children}
-    </AccordionItemContainer>
+    <AccordionItemContext.Provider value={{ value }}>
+      <AccordionItemContainer className={className} style={style}>
+        {children}
+      </AccordionItemContainer>
+    </AccordionItemContext.Provider>
   );
 };
 
 interface AccordionHeaderProps {
   children: ReactNode;
-  value: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -167,14 +190,14 @@ const expandIcon = (
 
 const AccordionHeader = ({
   children,
-  value,
   className,
   style,
 }: AccordionHeaderProps) => {
-  const { activeValues, toggleItem } = (() => {
+  const { activeValues, toggleItem, value } = (() => {
+    const { value } = useAccordionItem();
     const { activeValues } = useAccordion();
     const { toggleItem } = useAccordionDispatch();
-    return { activeValues, toggleItem };
+    return { activeValues, toggleItem, value };
   })();
 
   const isExpanded = activeValues.includes(value);
@@ -200,18 +223,17 @@ const AccordionHeader = ({
 
 interface AccordionContentProps {
   children: ReactNode;
-  value: string;
   className?: string;
   style?: React.CSSProperties;
 }
 
 const AccordionContent = ({
   children,
-  value,
   className,
   style,
 }: AccordionContentProps) => {
   const { activeValues } = useAccordion();
+  const { value } = useAccordionItem();
 
   const isExpanded = activeValues.includes(value);
 
