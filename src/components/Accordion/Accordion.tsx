@@ -1,7 +1,11 @@
 import {
   createContext,
+  forwardRef,
+  ForwardRefExoticComponent,
   HTMLAttributes,
   ReactNode,
+  Ref,
+  RefAttributes,
   useContext,
   useEffect,
   useRef,
@@ -15,6 +19,7 @@ import {
   Icon,
 } from "./Accordion.styles";
 import defaultTheme from "../../styles/theme";
+import { mergeRefs } from "../../utils";
 
 export interface AccordionContextProps {
   activeValues: string[];
@@ -62,16 +67,21 @@ export interface AccordionProps<T extends string | string[]>
   onChange?: (value: T) => void;
 }
 
-const Accordion = <T extends string | string[]>({
-  children,
-  multiple = false,
-  defaultValue,
-  value,
-  onChange,
-  style,
-  className,
-  ...props
-}: AccordionProps<T>) => {
+const AccordionInner = <T extends string | string[]>(
+  props: AccordionProps<T>,
+  ref: Ref<HTMLDivElement>
+) => {
+  const {
+    children,
+    multiple = false,
+    defaultValue,
+    value,
+    onChange,
+    style,
+    className,
+    ...rest
+  } = props;
+
   const [activeValues, setActiveValues] = useState<string[]>(
     multiple
       ? (defaultValue as string[]) ?? []
@@ -112,7 +122,12 @@ const Accordion = <T extends string | string[]>({
       value={{ activeValues: currentValues, multiple }}
     >
       <AccordionDispatch.Provider value={{ toggleItem }}>
-        <AccordionContainer className={className} style={style} {...props}>
+        <AccordionContainer
+          className={className}
+          style={style}
+          ref={ref}
+          {...rest}
+        >
           {children}
         </AccordionContainer>
       </AccordionDispatch.Provider>
@@ -143,21 +158,25 @@ const useAccordionItem = () => {
   return context;
 };
 
-const AccordionItem = ({
-  children,
-  value,
-  className,
-  style,
-  ...props
-}: AccordionItemProps) => {
-  return (
-    <AccordionItemContext.Provider value={{ value }}>
-      <AccordionItemContainer className={className} style={style} {...props}>
-        {children}
-      </AccordionItemContainer>
-    </AccordionItemContext.Provider>
-  );
-};
+const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
+  (
+    { children, value, className, style, ...props }: AccordionItemProps,
+    ref
+  ) => {
+    return (
+      <AccordionItemContext.Provider value={{ value }}>
+        <AccordionItemContainer
+          className={className}
+          style={style}
+          {...props}
+          ref={ref}
+        >
+          {children}
+        </AccordionItemContainer>
+      </AccordionItemContext.Provider>
+    );
+  }
+);
 
 interface AccordionHeaderProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -174,40 +193,38 @@ const expandIcon = (
   ></polyline>
 );
 
-const AccordionHeader = ({
-  children,
-  className,
-  style,
-  ...props
-}: AccordionHeaderProps) => {
-  const { activeValues, toggleItem, value } = (() => {
-    const { value } = useAccordionItem();
-    const { activeValues } = useAccordion();
-    const { toggleItem } = useAccordionDispatch();
-    return { activeValues, toggleItem, value };
-  })();
+const AccordionHeader = forwardRef<HTMLButtonElement, AccordionHeaderProps>(
+  ({ children, className, style, ...props }: AccordionHeaderProps, ref) => {
+    const { activeValues, toggleItem, value } = (() => {
+      const { value } = useAccordionItem();
+      const { activeValues } = useAccordion();
+      const { toggleItem } = useAccordionDispatch();
+      return { activeValues, toggleItem, value };
+    })();
 
-  const isExpanded = activeValues.includes(value);
+    const isExpanded = activeValues.includes(value);
 
-  return (
-    <AccordionHeaderButton
-      $expanded={isExpanded}
-      onClick={() => toggleItem(value)}
-      aria-expanded={isExpanded}
-      aria-controls={`accordion-content-${value}`}
-      id={`accordion-header-${value}`}
-      role="button"
-      className={className}
-      style={style}
-      {...props}
-    >
-      {children}
-      <Icon viewBox="0 0 24 24" $expanded={isExpanded}>
-        {expandIcon}
-      </Icon>
-    </AccordionHeaderButton>
-  );
-};
+    return (
+      <AccordionHeaderButton
+        $expanded={isExpanded}
+        onClick={() => toggleItem(value)}
+        aria-expanded={isExpanded}
+        aria-controls={`accordion-content-${value}`}
+        id={`accordion-header-${value}`}
+        role="button"
+        className={className}
+        style={style}
+        ref={ref}
+        {...props}
+      >
+        {children}
+        <Icon viewBox="0 0 24 24" $expanded={isExpanded}>
+          {expandIcon}
+        </Icon>
+      </AccordionHeaderButton>
+    );
+  }
+);
 
 interface AccordionContentProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode;
@@ -215,46 +232,54 @@ interface AccordionContentProps extends HTMLAttributes<HTMLDivElement> {
   style?: React.CSSProperties;
 }
 
-const AccordionContent = ({
-  children,
-  className,
-  style,
-  ...props
-}: AccordionContentProps) => {
-  const { activeValues } = useAccordion();
-  const { value } = useAccordionItem();
+const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
+  ({ children, className, style, ...props }: AccordionContentProps, ref) => {
+    const { activeValues } = useAccordion();
+    const { value } = useAccordionItem();
 
-  const isExpanded = activeValues.includes(value);
+    const isExpanded = activeValues.includes(value);
 
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState<number>(0);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const [height, setHeight] = useState<number>(0);
 
-  useEffect(() => {
-    if (contentRef.current) {
-      if (isExpanded) {
-        setHeight(contentRef.current.scrollHeight);
-      } else {
-        setHeight(0);
+    useEffect(() => {
+      if (contentRef.current) {
+        if (isExpanded) {
+          setHeight(contentRef.current.scrollHeight);
+        } else {
+          setHeight(0);
+        }
       }
-    }
-  }, [isExpanded]);
+    }, [isExpanded]);
 
-  return (
-    <AccordionContentPanel
-      $expanded={isExpanded}
-      $height={height}
-      role="region"
-      id={`accordion-content-${value}`}
-      aria-labelledby={`accordion-header-${value}`}
-      className={className}
-      style={style}
-      ref={contentRef}
-      {...props}
-    >
-      {children}
-    </AccordionContentPanel>
-  );
-};
+    return (
+      <AccordionContentPanel
+        $expanded={isExpanded}
+        $height={height}
+        role="region"
+        id={`accordion-content-${value}`}
+        aria-labelledby={`accordion-header-${value}`}
+        className={className}
+        style={style}
+        ref={mergeRefs(contentRef, ref)}
+        {...props}
+      >
+        {children}
+      </AccordionContentPanel>
+    );
+  }
+);
+
+interface AccordionComponent
+  extends ForwardRefExoticComponent<
+    AccordionProps<any> & RefAttributes<HTMLDivElement>
+  > {
+  Item: typeof AccordionItem;
+  Header: typeof AccordionHeader;
+  Content: typeof AccordionContent;
+}
+
+const Accordion = forwardRef(AccordionInner) as AccordionComponent;
 
 Accordion.Item = AccordionItem;
 Accordion.Header = AccordionHeader;
