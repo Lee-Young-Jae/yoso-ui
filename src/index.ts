@@ -11,6 +11,7 @@ export { default as Highlight } from "./components/Typography/Hightlight/Hightli
 export { default as Underline } from "./components/Typography/Underline/Underline";
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Checkbox } from "./components/Checkbox/Checkbox";
+export { default as Accordion } from "./components/Accordion/Accordion";
 
 export type { Theme } from "./styles/theme";
 export type { DateRange } from "./components/DatePicker/DatePicker.types";
