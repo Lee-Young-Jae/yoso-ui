@@ -49,6 +49,4 @@ const YourComponent = () => {
 
 ## 📚 Documentation
 
-[storybook](https://lee-young-jae.github.io/yoso-ui/)
-
-작성중...
+[storybook](https://lee-young-jae.github.io/yoso-ui/)에서 확인할 수 있습니다.
