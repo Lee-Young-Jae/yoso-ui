@@ -20,6 +20,7 @@ export interface Theme {
     GRAY_300: string;
     GRAY_500: string;
     GRAY_600: string;
+    GRAY_800: string;
     GRAY_900: string;
     BLACK: string;
     WHITE: string;
@@ -86,6 +87,7 @@ const defaultTheme: Theme = {
     GRAY_300: "#E0E0E0",
     GRAY_500: "#9E9E9E",
     GRAY_600: "#757575",
+    GRAY_800: "#424242",
     GRAY_900: "#212121",
     BLACK: "#212121",
     WHITE: "#FFFFFF",
