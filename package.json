@@ -11,12 +11,8 @@
   ],
   "keywords": [
     "react",
-    "ui",
-    "component",
-    "library",
-    "design",
-    "system",
-    "yoso",
+    "react-component",
+    "ui-library",
     "yoso-ui"
   ],
   "main": "dist/index.js",
