@@ -62,6 +62,7 @@ export interface Theme {
   zIndex?: {
     modal: number;
     toast: number;
+    tooltip: number;
   };
 }
 
@@ -128,6 +129,7 @@ const defaultTheme: Theme = {
   zIndex: {
     modal: 1000,
     toast: 1100,
+    tooltip: 1200,
   },
 };
 
