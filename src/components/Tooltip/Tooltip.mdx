@@ -1,0 +1,68 @@
+import { Canvas, Meta, Controls, Story } from "@storybook/blocks";
+
+import Tooltip from "./Tooltip";
+import Button from "../Button/Button";
+import Input from "../Input/Input";
+import * as TooltipStories from "./Tooltip.stories";
+
+<Meta title="Components/Tooltip" component={Tooltip} />
+
+# Tooltip 컴포넌트
+
+`Tooltip` 컴포넌트는 사용자에게 추가 정보를 제공하기 위해 호버, 포커스 또는 클릭 시 나타나는 작은 정보 창입니다. 다양한 위치, 트리거 방식, 커스텀 스타일링 등을 지원하며, 접근성을 고려하여 제작되었습니다.
+
+## 주요 기능
+
+- **다양한 위치 지원**: `placement` prop을 통해 `top`, `bottom`, `left`, `right` 위치를 지정할 수 있습니다.
+- **트리거 방식 선택**: `trigger` prop을 사용하여 `hover`, `click`, `focus` 중 하나로 툴팁을 활성화할 수 있습니다.
+- **접근성 향상**: ARIA 속성을 사용하여 스크린 리더 사용자도 툴팁 정보를 얻을 수 있습니다.
+
+## 사용 방법
+
+- tooltip을 사용할 컴포넌트를 `Tooltip` 컴포넌트로 감싸주세요.
+
+```tsx
+import { Tooltip } from "yoso-ui";
+
+const YourComponent = () => (
+  <Tooltip content="Tooltip 내용입니다." placement="top">
+    <Button>툴팁 트리거</Button>
+  </Tooltip>
+);
+```
+
+<Canvas of={TooltipStories.Default} />
+<Controls of={TooltipStories.Default} />
+
+- 'trigger' prop을 사용하여 툴팁을 활성화할 방식을 선택할 수 있습니다.
+
+```tsx
+<Tooltip
+  content="Tooltip 내용입니다."
+  placement="bottom"
+  trigger="focus"
+  content="포커스 툴팁"
+>
+  <Input />
+</Tooltip>
+```
+
+<Canvas of={TooltipStories.FocusInput} />
+
+- 커스텀 Style 적용하기
+
+```tsx
+<Tooltip
+  {...props}
+  contentStyle={{ backgroundColor: "#000", color: "#fff" }}
+  content={
+    <span role="img" aria-label="heart">
+      ⭐️
+    </span>
+  }
+>
+  <Button variant="">마우스를 올려보세요</Button>
+</Tooltip>
+```
+
+<Canvas of={TooltipStories.CustomStyle} />
