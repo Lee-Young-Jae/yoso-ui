@@ -3,7 +3,6 @@ import { getRGBA } from "../../utils";
 
 export const AccordionContainer = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius.medium};
-  /* overflow: hidden; */
 `;
 
 export const AccordionItemContainer = styled.div`
@@ -25,7 +24,6 @@ export const AccordionHeaderButton = styled.button<{ $expanded?: boolean }>`
   justify-content: space-between;
   color: ${({ theme, $expanded }) =>
     $expanded ? theme.colors.BLUE_500 : theme.colors.GRAY_800};
-
   &:hover {
     background-color: ${({ theme }) => getRGBA(theme.defaultColor, 0.1)};
   }
@@ -55,4 +53,10 @@ export const Icon = styled.svg<{ $expanded?: boolean }>`
     $expanded ? "rotate(180deg)" : "rotate(0deg)"};
   width: ${({ theme }) => theme.spacing.xLarge};
   height: ${({ theme }) => theme.spacing.xLarge};
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: ${({ theme }) => theme.spacing.large};
+    height: ${({ theme }) => theme.spacing.large};
+  }
 `;
