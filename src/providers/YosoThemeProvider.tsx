@@ -30,7 +30,6 @@ const YosoThemeProvider = ({ theme, children }: YosoThemeProviderProps) => {
         {children}
         <div id="modalRoot" />
         <div id="toastRoot" />
-        <div id="tooltipRoot" />
       </ToastProvider>
     </StyledThemeProvider>
   );

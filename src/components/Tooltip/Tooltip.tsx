@@ -13,7 +13,7 @@ import styled from "styled-components";
 
 import { Portal } from "../Portal/Portal";
 
-interface TooltipProps {
+export interface TooltipProps {
   children: ReactNode;
   content: ReactNode;
   placement?: "top" | "bottom" | "left" | "right";
@@ -50,7 +50,7 @@ const TooltipTail = styled.div<{ $placement: Placement }>`
   position: absolute;
   width: 12px;
   height: 12px;
-  background-color: ${({ theme }) => theme.colors.WHITE};
+  background-color: inherit;
   transform: rotate(45deg);
 
   ${({ $placement }) => {
@@ -327,11 +327,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
       >
         {children}
         {isRendered && (
-          <Portal
-            container={
-              document?.querySelector("#tooltipRoot") as HTMLDivElement
-            }
-          >
+          <Portal container={triggerRef.current?.ownerDocument.body}>
             <TooltipContent
               id={tooltipId}
               ref={tooltipRef}
@@ -350,5 +346,7 @@ const Tooltip = forwardRef<HTMLDivElement, TooltipProps>(
     );
   }
 );
+
+Tooltip.displayName = "Tooltip";
 
 export default Tooltip;
