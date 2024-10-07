@@ -12,6 +12,7 @@ export { default as Underline } from "./components/Typography/Underline/Underlin
 export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Checkbox } from "./components/Checkbox/Checkbox";
 export { default as Accordion } from "./components/Accordion/Accordion";
+export { default as Tooltip } from "./components/Tooltip/Tooltip";
 
 export type { Theme } from "./styles/theme";
 export type { DateRange } from "./components/DatePicker/DatePicker.types";
