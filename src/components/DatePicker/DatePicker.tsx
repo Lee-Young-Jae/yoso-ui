@@ -1,3 +1,5 @@
+"use client";
+
 import { DatePickerProps } from "./DatePicker.types";
 import {
   DatePickerContainer,
