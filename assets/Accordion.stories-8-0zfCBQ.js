@@ -1,44 +1,48 @@
-import{j as e}from"./jsx-runtime-CkxqCPlQ.js";import{r as i}from"./index-DJO9vBfz.js";import{d as h}from"./styled-components.browser.esm-Dsr6U-en.js";import{g as b}from"./style-CuGJsH27.js";import{d as Z}from"./theme-BstcRpbz.js";import{B as Y}from"./Button-BZyZE5fo.js";function ee(...n){return t=>{n.forEach(c=>{typeof c=="function"?c(t):c!=null&&(c.current=t)})}}const ne=h.div`
-  border-radius: ${({theme:n})=>n.borderRadius.medium};
-  /* overflow: hidden; */
+import{j as n}from"./jsx-runtime-CkxqCPlQ.js";import{r as i}from"./index-DJO9vBfz.js";import{d as h}from"./styled-components.browser.esm-Dsr6U-en.js";import{g as b}from"./style-CuGJsH27.js";import{d as Z}from"./theme-BstcRpbz.js";import{B as Y}from"./Button-BZyZE5fo.js";function ee(...e){return t=>{e.forEach(c=>{typeof c=="function"?c(t):c!=null&&(c.current=t)})}}const ne=h.div`
+  border-radius: ${({theme:e})=>e.borderRadius.medium};
 `,oe=h.div`
   &:last-child {
     border-bottom: none;
   }
 `,te=h.button`
   width: 100%;
-  padding: ${({theme:n})=>n.spacing.large};
-  background-color: ${({theme:n})=>n.colors.WHITE};
+  padding: ${({theme:e})=>e.spacing.large};
+  background-color: ${({theme:e})=>e.colors.WHITE};
   border: none;
   text-align: left;
   cursor: pointer;
-  font-size: ${({theme:n})=>n.fontSizes.medium};
+  font-size: ${({theme:e})=>e.fontSizes.medium};
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: ${({theme:n,$expanded:t})=>t?n.colors.BLUE_500:n.colors.GRAY_800};
-
+  color: ${({theme:e,$expanded:t})=>t?e.colors.BLUE_500:e.colors.GRAY_800};
   &:hover {
-    background-color: ${({theme:n})=>b(n.defaultColor,.1)};
+    background-color: ${({theme:e})=>b(e.defaultColor,.1)};
   }
 
   &:focus {
     outline: none;
-    background-color: ${({theme:n})=>b(n.defaultColor,.1)};
+    background-color: ${({theme:e})=>b(e.defaultColor,.1)};
   }
 `,re=h.div`
   overflow: hidden;
-  max-height: ${({$height:n})=>n}px;
-  padding: ${({theme:n,$expanded:t})=>t?n.spacing.large:`0 ${n.spacing.large}`};
+  max-height: ${({$height:e})=>e}px;
+  padding: ${({theme:e,$expanded:t})=>t?e.spacing.large:`0 ${e.spacing.large}`};
   transition: max-height 0.3s ease, padding 0.3s ease, opacity 0.3s ease;
-  opacity: ${({$expanded:n})=>n?1:0};
-  color: ${({theme:n})=>n.colors.GRAY_800};
+  opacity: ${({$expanded:e})=>e?1:0};
+  color: ${({theme:e})=>e.colors.GRAY_800};
 `,ce=h.svg`
   transition: transform 0.3s;
-  transform: ${({$expanded:n})=>n?"rotate(180deg)":"rotate(0deg)"};
-  width: ${({theme:n})=>n.spacing.xLarge};
-  height: ${({theme:n})=>n.spacing.xLarge};
-`,L=i.createContext({activeValues:[],multiple:!1}),W=i.createContext({toggleItem:()=>{}}),F=()=>{const n=i.useContext(L);if(!n)throw new Error("useAccordion must be used within AccordionProvider");return n},ie=()=>{const n=i.useContext(W);if(!n)throw new Error("useAccordionDispatch must be used within AccordionProvider");return n},se=(n,t)=>{const{children:c,multiple:r=!1,defaultValue:a,value:d,onChange:u,style:s,className:l,...A}=n,[m,H]=i.useState(r?a??[]:a!==void 0?[a]:[]),V=d!==void 0,g=V?r?d:[d]:m,Q=v=>{let p;g.includes(v)?p=r?g.filter(X=>X!==v):[]:p=r?[...g,v]:[v],V||H(p),u&&u(r?p:p[0]??"")};return e.jsx(L.Provider,{value:{activeValues:g,multiple:r},children:e.jsx(W.Provider,{value:{toggleItem:Q},children:e.jsx(ne,{className:l,style:s,ref:t,...A,children:c})})})},J=i.createContext(null),K=()=>{const n=i.useContext(J);if(!n)throw new Error("useAccordionItem must be used within AccordionItem");return n},ae=i.forwardRef(({children:n,value:t,className:c,style:r,...a},d)=>e.jsx(J.Provider,{value:{value:t},children:e.jsx(oe,{className:c,style:r,...a,ref:d,children:n})})),de=e.jsx("polyline",{points:"6 9 12 15 18 9",stroke:Z.colors.GRAY_600,strokeWidth:"2",fill:"none"}),le=i.forwardRef(({children:n,className:t,style:c,...r},a)=>{const{activeValues:d,toggleItem:u,value:s}=(()=>{const{value:A}=K(),{activeValues:m}=F(),{toggleItem:H}=ie();return{activeValues:m,toggleItem:H,value:A}})(),l=d.includes(s);return e.jsxs(te,{$expanded:l,onClick:()=>u(s),"aria-expanded":l,"aria-controls":`accordion-content-${s}`,id:`accordion-header-${s}`,role:"button",className:t,style:c,ref:a,...r,children:[n,e.jsx(ce,{viewBox:"0 0 24 24",$expanded:l,children:de})]})}),ue=i.forwardRef(({children:n,className:t,style:c,...r},a)=>{const{activeValues:d}=F(),{value:u}=K(),s=d.includes(u),l=i.useRef(null),[A,m]=i.useState(0);return i.useEffect(()=>{l.current&&m(s?l.current.scrollHeight:0)},[s]),e.jsx(re,{$expanded:s,$height:A,role:"region",id:`accordion-content-${u}`,"aria-labelledby":`accordion-header-${u}`,className:t,style:c,ref:ee(l,a),...r,children:n})}),o=i.forwardRef(se);o.Item=ae;o.Header=le;o.Content=ue;o.__docgenInfo={description:"",methods:[],displayName:"Accordion",props:{children:{required:!0,tsType:{name:"ReactReactNode",raw:"React.ReactNode"},description:""},style:{required:!1,tsType:{name:"ReactCSSProperties",raw:"React.CSSProperties"},description:""},className:{required:!1,tsType:{name:"string"},description:""},multiple:{required:!1,tsType:{name:"boolean"},description:""},defaultValue:{required:!1,tsType:{name:"T"},description:""},value:{required:!1,tsType:{name:"T"},description:""},onChange:{required:!1,tsType:{name:"signature",type:"function",raw:"(value: T) => void",signature:{arguments:[{type:{name:"T"},name:"value"}],return:{name:"void"}}},description:""}},composes:["Omit"]};const Ce={title:"Components/Accordion",component:o,parameters:{tags:["autodocs"],docs:{description:{component:`
+  transform: ${({$expanded:e})=>e?"rotate(180deg)":"rotate(0deg)"};
+  width: ${({theme:e})=>e.spacing.xLarge};
+  height: ${({theme:e})=>e.spacing.xLarge};
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: ${({theme:e})=>e.spacing.large};
+    height: ${({theme:e})=>e.spacing.large};
+  }
+`,L=i.createContext({activeValues:[],multiple:!1}),W=i.createContext({toggleItem:()=>{}}),F=()=>{const e=i.useContext(L);if(!e)throw new Error("useAccordion must be used within AccordionProvider");return e},ie=()=>{const e=i.useContext(W);if(!e)throw new Error("useAccordionDispatch must be used within AccordionProvider");return e},se=(e,t)=>{const{children:c,multiple:r=!1,defaultValue:a,value:d,onChange:u,style:s,className:l,...A}=e,[m,H]=i.useState(r?a??[]:a!==void 0?[a]:[]),V=d!==void 0,g=V?r?d:[d]:m,Q=v=>{let p;g.includes(v)?p=r?g.filter(X=>X!==v):[]:p=r?[...g,v]:[v],V||H(p),u&&u(r?p:p[0]??"")};return n.jsx(L.Provider,{value:{activeValues:g,multiple:r},children:n.jsx(W.Provider,{value:{toggleItem:Q},children:n.jsx(ne,{className:l,style:s,ref:t,...A,children:c})})})},J=i.createContext(null),K=()=>{const e=i.useContext(J);if(!e)throw new Error("useAccordionItem must be used within AccordionItem");return e},ae=i.forwardRef(({children:e,value:t,className:c,style:r,...a},d)=>n.jsx(J.Provider,{value:{value:t},children:n.jsx(oe,{className:c,style:r,...a,ref:d,children:e})})),de=n.jsx("polyline",{points:"6 9 12 15 18 9",stroke:Z.colors.GRAY_600,strokeWidth:"2",fill:"none"}),le=i.forwardRef(({children:e,className:t,style:c,...r},a)=>{const{activeValues:d,toggleItem:u,value:s}=(()=>{const{value:A}=K(),{activeValues:m}=F(),{toggleItem:H}=ie();return{activeValues:m,toggleItem:H,value:A}})(),l=d.includes(s);return n.jsxs(te,{$expanded:l,onClick:()=>u(s),"aria-expanded":l,"aria-controls":`accordion-content-${s}`,id:`accordion-header-${s}`,role:"button",className:t,style:c,ref:a,...r,children:[e,n.jsx(ce,{viewBox:"0 0 24 24",$expanded:l,children:de})]})}),ue=i.forwardRef(({children:e,className:t,style:c,...r},a)=>{const{activeValues:d}=F(),{value:u}=K(),s=d.includes(u),l=i.useRef(null),[A,m]=i.useState(0);return i.useEffect(()=>{l.current&&m(s?l.current.scrollHeight:0)},[s]),n.jsx(re,{$expanded:s,$height:A,role:"region",id:`accordion-content-${u}`,"aria-labelledby":`accordion-header-${u}`,className:t,style:c,ref:ee(l,a),...r,children:e})}),o=i.forwardRef(se);o.Item=ae;o.Header=le;o.Content=ue;o.__docgenInfo={description:"",methods:[],displayName:"Accordion",props:{children:{required:!0,tsType:{name:"ReactReactNode",raw:"React.ReactNode"},description:""},style:{required:!1,tsType:{name:"ReactCSSProperties",raw:"React.CSSProperties"},description:""},className:{required:!1,tsType:{name:"string"},description:""},multiple:{required:!1,tsType:{name:"boolean"},description:""},defaultValue:{required:!1,tsType:{name:"T"},description:""},value:{required:!1,tsType:{name:"T"},description:""},onChange:{required:!1,tsType:{name:"signature",type:"function",raw:"(value: T) => void",signature:{arguments:[{type:{name:"T"},name:"value"}],return:{name:"void"}}},description:""}},composes:["Omit"]};const Ce={title:"Components/Accordion",component:o,parameters:{tags:["autodocs"],docs:{description:{component:`
 **Accordion 컴포넌트**
 
 \`Accordion\` 컴포넌트는 콘텐츠의 섹션을 접고 펼칠 수 있는 UI 요소를 제공합니다. 단일 및 다중 확장, 컨트롤드 및 언컨트롤드 모드를 모두 지원하며, 다양한 옵션을 통해 커스터마이징할 수 있습니다.
@@ -65,7 +69,7 @@ const YourComponent = () => (
   </Accordion>
 );
 \`\`\`
-          `}}},tags:["autodocs"],argTypes:{multiple:{control:"boolean",description:"여러 아이템을 동시에 확장할 수 있도록 허용합니다.",table:{category:"Behavior"}},value:{control:"object",description:"컨트롤드 모드에서 확장된 아이템의 값입니다.",table:{category:"Behavior"}},defaultValue:{control:"object",description:"언컨트롤드 모드에서 초기 확장된 아이템의 값입니다.",table:{category:"Behavior"}},onChange:{action:"changed",description:"확장된 아이템이 변경될 때 호출되는 콜백 함수입니다.",table:{category:"Events"}},className:{control:"text",description:"Accordion 컨테이너의 커스텀 클래스입니다.",table:{category:"Style"}},style:{control:"object",description:"Accordion 컨테이너의 인라인 스타일입니다.",table:{category:"Style"}}},args:{multiple:!1,className:"",style:{}}},C={name:"기본 아코디언",render:n=>e.jsx(o,{...n,children:e.jsxs(o.Item,{value:"item1",children:[e.jsx(o.Header,{children:'결국 중요한 건 인생을 얼마나 살았느냐가 아니다. 그동안 살아간 삶이다."'}),e.jsx(o.Content,{children:"이 영감을 주는 명언은 우리가 삶을 평가하는 방식을 생각하게 하는 교묘한 단어 유희를 사용합니다."})]})}),parameters:{docs:{description:{story:`
+          `}}},tags:["autodocs"],argTypes:{multiple:{control:"boolean",description:"여러 아이템을 동시에 확장할 수 있도록 허용합니다.",table:{category:"Behavior"}},value:{control:"object",description:"컨트롤드 모드에서 확장된 아이템의 값입니다.",table:{category:"Behavior"}},defaultValue:{control:"object",description:"언컨트롤드 모드에서 초기 확장된 아이템의 값입니다.",table:{category:"Behavior"}},onChange:{action:"changed",description:"확장된 아이템이 변경될 때 호출되는 콜백 함수입니다.",table:{category:"Events"}},className:{control:"text",description:"Accordion 컨테이너의 커스텀 클래스입니다.",table:{category:"Style"}},style:{control:"object",description:"Accordion 컨테이너의 인라인 스타일입니다.",table:{category:"Style"}}},args:{multiple:!1,className:"",style:{}}},C={name:"기본 아코디언",render:e=>n.jsx(o,{...e,children:n.jsxs(o.Item,{value:"item1",children:[n.jsx(o.Header,{children:'결국 중요한 건 인생을 얼마나 살았느냐가 아니다. 그동안 살아간 삶이다."'}),n.jsx(o.Content,{children:"이 영감을 주는 명언은 우리가 삶을 평가하는 방식을 생각하게 하는 교묘한 단어 유희를 사용합니다."})]})}),parameters:{docs:{description:{story:`
 **기본**
 
 \`Accordion\` 컴포넌트는 아이템을 확장할 수 있는 UI 요소입니다.
@@ -79,7 +83,7 @@ const YourComponent = () => (
   {/* 다른 아이템들 */}
 </Accordion>
 \`\`\`
-          `}}}},x={name:"단일 확장 (언컨트롤드)",render:n=>e.jsxs(o,{...n,children:[e.jsxs(o.Item,{value:"item1",children:[e.jsx(o.Header,{children:'제 인생의 사명은 단순히 생존하는 것이 아니라 번창하는 것입니다."'}),e.jsxs(o.Content,{children:[e.jsx("h2",{children:"마야 안젤루"}),"인생에 대한 영감을 주는 이 명언은 카드에 특히 적합합니다. 적절한 시기에 다른 사람에게 이 명언이 적힌 카드를 선물하면 어려움 속에서도 잘 살아나갈 동기를 부여할 수 있습니다."]})]}),e.jsxs(o.Item,{value:"item2",children:[e.jsx(o.Header,{children:'일 때문에 삶을 포기해서는 안 된다."'}),e.jsxs(o.Content,{children:[e.jsx("h2",{children:"존 우든"})," 워라밸이라고 하죠?"]})]}),e.jsxs(o.Item,{value:"item3",children:[e.jsx(o.Header,{children:"더 나은 것을 위해 좋은 것을 포기하는 것을 두려워하지 마라."}),e.jsxs(o.Content,{children:[e.jsx("h2",{children:"존 D. 록펠러"}),"인생에 대한 영감을 주는 명언으로, '충분히 좋은 것'에 안주하는 것과는 정반대의 의미를 담고 있습니다."]})]})]}),parameters:{docs:{description:{story:"\n**단일 확장 (언컨트롤드)**\n\n`multiple`이 `false`인 기본 모드에서는 한 번에 하나의 아이템만 확장됩니다.\n\n```tsx\n<Accordion>\n  {/* Accordion 아이템들 */}\n</Accordion>\n```\n          "}}}},I={name:"다중 확장 (언컨트롤드)",args:{multiple:!0},render:n=>e.jsxs(o,{...n,children:[e.jsxs(o.Item,{value:"item1",children:[e.jsx(o.Header,{children:"헤더 1"}),e.jsx(o.Content,{children:"콘텐츠 1"})]}),e.jsxs(o.Item,{value:"item2",children:[e.jsx(o.Header,{children:"헤더 2"}),e.jsx(o.Content,{children:"콘텐츠 2"})]}),e.jsxs(o.Item,{value:"item3",children:[e.jsx(o.Header,{children:"헤더 3"}),e.jsx(o.Content,{children:"콘텐츠 3"})]})]}),parameters:{docs:{description:{story:"\n**다중 확장 (언컨트롤드)**\n\n`multiple`을 `true`로 설정하여 여러 아이템을 동시에 확장할 수 있습니다.\n\n```tsx\n<Accordion multiple>\n  {/* Accordion 아이템들 */}\n</Accordion>\n```\n          "}}}},j={name:"단일 확장 (컨트롤드)",render:n=>{const[t,c]=i.useState(null);return e.jsxs(e.Fragment,{children:[e.jsx(Y,{size:"small",onClick:()=>c(r=>r?null:"item1"),style:{marginBottom:"10px"},children:t?"Close Panel":"Open Panel 1"}),e.jsxs(o,{...n,value:t,onChange:c,children:[e.jsxs(o.Item,{value:"item1",children:[e.jsx(o.Header,{children:"헤더 1"}),e.jsx(o.Content,{children:"콘텐츠 1"})]}),e.jsxs(o.Item,{value:"item2",children:[e.jsx(o.Header,{children:"헤더 2"}),e.jsx(o.Content,{children:"콘텐츠 2"})]})]})]})},parameters:{docs:{description:{story:`
+          `}}}},x={name:"단일 확장 (언컨트롤드)",render:e=>n.jsxs(o,{...e,children:[n.jsxs(o.Item,{value:"item1",children:[n.jsx(o.Header,{children:'제 인생의 사명은 단순히 생존하는 것이 아니라 번창하는 것입니다."'}),n.jsxs(o.Content,{children:[n.jsx("h2",{children:"마야 안젤루"}),"인생에 대한 영감을 주는 이 명언은 카드에 특히 적합합니다. 적절한 시기에 다른 사람에게 이 명언이 적힌 카드를 선물하면 어려움 속에서도 잘 살아나갈 동기를 부여할 수 있습니다."]})]}),n.jsxs(o.Item,{value:"item2",children:[n.jsx(o.Header,{children:'일 때문에 삶을 포기해서는 안 된다."'}),n.jsxs(o.Content,{children:[n.jsx("h2",{children:"존 우든"})," 워라밸이라고 하죠?"]})]}),n.jsxs(o.Item,{value:"item3",children:[n.jsx(o.Header,{children:"더 나은 것을 위해 좋은 것을 포기하는 것을 두려워하지 마라."}),n.jsxs(o.Content,{children:[n.jsx("h2",{children:"존 D. 록펠러"}),"인생에 대한 영감을 주는 명언으로, '충분히 좋은 것'에 안주하는 것과는 정반대의 의미를 담고 있습니다."]})]})]}),parameters:{docs:{description:{story:"\n**단일 확장 (언컨트롤드)**\n\n`multiple`이 `false`인 기본 모드에서는 한 번에 하나의 아이템만 확장됩니다.\n\n```tsx\n<Accordion>\n  {/* Accordion 아이템들 */}\n</Accordion>\n```\n          "}}}},I={name:"다중 확장 (언컨트롤드)",args:{multiple:!0},render:e=>n.jsxs(o,{...e,children:[n.jsxs(o.Item,{value:"item1",children:[n.jsx(o.Header,{children:"헤더 1"}),n.jsx(o.Content,{children:"콘텐츠 1"})]}),n.jsxs(o.Item,{value:"item2",children:[n.jsx(o.Header,{children:"헤더 2"}),n.jsx(o.Content,{children:"콘텐츠 2"})]}),n.jsxs(o.Item,{value:"item3",children:[n.jsx(o.Header,{children:"헤더 3"}),n.jsx(o.Content,{children:"콘텐츠 3"})]})]}),parameters:{docs:{description:{story:"\n**다중 확장 (언컨트롤드)**\n\n`multiple`을 `true`로 설정하여 여러 아이템을 동시에 확장할 수 있습니다.\n\n```tsx\n<Accordion multiple>\n  {/* Accordion 아이템들 */}\n</Accordion>\n```\n          "}}}},j={name:"단일 확장 (컨트롤드)",render:e=>{const[t,c]=i.useState(null);return n.jsxs(n.Fragment,{children:[n.jsx(Y,{size:"small",onClick:()=>c(r=>r?null:"item1"),style:{marginBottom:"10px"},children:t?"Close Panel":"Open Panel 1"}),n.jsxs(o,{...e,value:t,onChange:c,children:[n.jsxs(o.Item,{value:"item1",children:[n.jsx(o.Header,{children:"헤더 1"}),n.jsx(o.Content,{children:"콘텐츠 1"})]}),n.jsxs(o.Item,{value:"item2",children:[n.jsx(o.Header,{children:"헤더 2"}),n.jsx(o.Content,{children:"콘텐츠 2"})]})]})]})},parameters:{docs:{description:{story:`
 **단일 확장 (컨트롤드)**
 
 \`value\`와 \`onChange\`를 사용하여 확장된 아이템을 외부에서 제어할 수 있습니다.
@@ -98,7 +102,7 @@ const [activeValue, setActiveValue] = useState<string | null>(null);
   </Accordion>
 </>
 \`\`\`
-          `}}}},f={name:"다중 확장 (컨트롤드)",args:{multiple:!0},render:n=>{const[t,c]=i.useState([]);return e.jsxs(e.Fragment,{children:[e.jsx(Y,{size:"small",onClick:()=>c(r=>r.length?[]:["item1","item2"]),style:{marginBottom:"10px"},children:t.length?"Close All":"Open item1 and item2"}),e.jsxs(o,{...n,value:t,onChange:r=>{c(r),n.onChange&&n.onChange(r)},children:[e.jsxs(o.Item,{value:"item1",children:[e.jsx(o.Header,{children:"헤더 1"}),e.jsx(o.Content,{children:"콘텐츠 1"})]}),e.jsxs(o.Item,{value:"item2",children:[e.jsx(o.Header,{children:"헤더 2"}),e.jsx(o.Content,{children:"콘텐츠 2"})]}),e.jsxs(o.Item,{value:"item3",children:[e.jsx(o.Header,{children:"헤더 3"}),e.jsx(o.Content,{children:"콘텐츠 3"})]})]})]})},parameters:{docs:{description:{story:`
+          `}}}},f={name:"다중 확장 (컨트롤드)",args:{multiple:!0},render:e=>{const[t,c]=i.useState([]);return n.jsxs(n.Fragment,{children:[n.jsx(Y,{size:"small",onClick:()=>c(r=>r.length?[]:["item1","item2"]),style:{marginBottom:"10px"},children:t.length?"Close All":"Open item1 and item2"}),n.jsxs(o,{...e,value:t,onChange:r=>{c(r),e.onChange&&e.onChange(r)},children:[n.jsxs(o.Item,{value:"item1",children:[n.jsx(o.Header,{children:"헤더 1"}),n.jsx(o.Content,{children:"콘텐츠 1"})]}),n.jsxs(o.Item,{value:"item2",children:[n.jsx(o.Header,{children:"헤더 2"}),n.jsx(o.Content,{children:"콘텐츠 2"})]}),n.jsxs(o.Item,{value:"item3",children:[n.jsx(o.Header,{children:"헤더 3"}),n.jsx(o.Content,{children:"콘텐츠 3"})]})]})]})},parameters:{docs:{description:{story:`
 **다중 확장 (컨트롤드)**
 
 \`multiple\` 모드에서 \`value\`와 \`onChange\`를 사용하여 확장된 아이템의 배열을 제어할 수 있습니다.
@@ -117,7 +121,7 @@ const [activeValues, setActiveValues] = useState<string[]>([]);
   </Accordion>
 </>
 \`\`\`
-          `}}}},y={name:"커스텀 스타일 적용",render:n=>e.jsx(o,{...n,children:e.jsxs(o.Item,{value:"item1",children:[e.jsx(o.Header,{style:{backgroundColor:"lightblue",color:"white"},children:"헤더 1"}),e.jsx(o.Content,{style:{backgroundColor:"lightblue",color:"white"},children:"콘텐츠 1"})]})}),parameters:{docs:{description:{story:`
+          `}}}},y={name:"커스텀 스타일 적용",render:e=>n.jsx(o,{...e,children:n.jsxs(o.Item,{value:"item1",children:[n.jsx(o.Header,{style:{backgroundColor:"lightblue",color:"white"},children:"헤더 1"}),n.jsx(o.Content,{style:{backgroundColor:"lightblue",color:"white"},children:"콘텐츠 1"})]})}),parameters:{docs:{description:{story:`
 **커스텀 스타일 적용**
 
 \`className\`과 \`style\`을 사용하여 컴포넌트에 커스텀 스타일을 적용할 수 있습니다.
