@@ -11,6 +11,11 @@ const preview: Preview = {
       </YosoThemeProvider>
     ),
   ],
+  parameters: {
+    docs: {
+      inlineStories: false,
+    },
+  },
 };
 
 export default preview;
