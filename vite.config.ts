@@ -8,6 +8,7 @@ export default defineConfig({
   plugins: [
     react(),
     dts({
+      exclude: ["**/*.stories.tsx", "**/*.mdx"],
       outDir: "dist/src",
       include: ["src"],
     }),
