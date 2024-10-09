@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { StoryObj } from "@storybook/react";
 
 import Tooltip, { TooltipProps } from "./Tooltip";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 
-const meta: Meta<TooltipProps> = {
+const meta = {
   component: Tooltip,
-  title: "Components/Tooltip/Example",
+  title: "Components/Tooltip",
 };
 
 export default meta;
@@ -14,6 +14,8 @@ export default meta;
 type Story = StoryObj<TooltipProps>;
 
 export const Default: Story = {
+  name: "기본 툴팁",
+  parameters: {},
   args: {
     content: "tooltip 내용입니다.",
     placement: "top",
@@ -104,6 +106,7 @@ export const Default: Story = {
 };
 
 export const FocusInput: Story = {
+  name: "포커스 툴팁",
   args: {
     content: "포커스 툴팁",
     placement: "bottom",
@@ -117,6 +120,7 @@ export const FocusInput: Story = {
 };
 
 export const CustomStyle: Story = {
+  name: "커스텀 스타일",
   args: {
     content: "나만의 스타일",
     placement: "right",
