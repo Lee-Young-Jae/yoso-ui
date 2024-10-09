@@ -1,4 +1,4 @@
-import{j as n}from"./jsx-runtime-CkxqCPlQ.js";import{useMDXComponents as i}from"./index-BrnU7xv7.js";import{ae as l,af as e,ag as c}from"./index-B9RqneJV.js";import{T as p,D as r,F as d,C as x}from"./Tooltip.stories-CFOiZ9iH.js";import"./Button-BZyZE5fo.js";import"./Input-CvG_f9Ux.js";import"./index-DJO9vBfz.js";import"./iframe-DvXwmDDe.js";import"../sb-preview/runtime.js";import"./index-Cp9I2zMD.js";import"./index-D-8MO0q_.js";import"./index-CvTBScqg.js";import"./index-DrFu-skq.js";import"./styled-components.browser.esm-Dsr6U-en.js";import"./Portal-CvBg43kE.js";function s(t){const o={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...i(),...t.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{title:"Components/Tooltip",component:p}),`
+import{j as n}from"./jsx-runtime-CkxqCPlQ.js";import{useMDXComponents as s}from"./index-BrnU7xv7.js";import{ag as l,ah as e,ai as c}from"./chunk-NUUEMKO5-CKxQSe90.js";import{T as p,a as d,D as r,F as x,C as a}from"./Tooltip.stories-DfQLs1Qn.js";import"./Button-BZyZE5fo.js";import"./Input-CvG_f9Ux.js";import"./index-DJO9vBfz.js";import"./iframe-CoqzMUwF.js";import"../sb-preview/runtime.js";import"./index-Cp9I2zMD.js";import"./index-D-8MO0q_.js";import"./index-CvTBScqg.js";import"./index-DrFu-skq.js";import"./client-Cd-gdppX.js";import"./styled-components.browser.esm-Dsr6U-en.js";import"./Portal-CvBg43kE.js";function i(t){const o={code:"code",h1:"h1",h2:"h2",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...s(),...t.components};return n.jsxs(n.Fragment,{children:[n.jsx(l,{of:p,title:"Components/Tooltip",component:d}),`
 `,n.jsx(o.h1,{id:"tooltip-컴포넌트",children:"Tooltip 컴포넌트"}),`
 `,n.jsxs(o.p,{children:[n.jsx(o.code,{children:"Tooltip"})," 컴포넌트는 사용자에게 추가 정보를 제공하기 위해 호버, 포커스 또는 클릭 시 나타나는 작은 정보 창입니다. 다양한 위치, 트리거 방식, 커스텀 스타일링 등을 지원하며, 접근성을 고려하여 제작되었습니다."]}),`
 `,n.jsx(o.h2,{id:"주요-기능",children:"주요 기능"}),`
@@ -33,7 +33,7 @@ const YourComponent = () => (
   <Input />
 </Tooltip>
 `})}),`
-`,n.jsx(e,{of:d}),`
+`,n.jsx(e,{of:x}),`
 `,n.jsxs(o.ul,{children:[`
 `,n.jsx(o.li,{children:"커스텀 Style 적용하기"}),`
 `]}),`
@@ -49,4 +49,4 @@ const YourComponent = () => (
   <Button variant="">마우스를 올려보세요</Button>
 </Tooltip>
 `})}),`
-`,n.jsx(e,{of:x})]})}function F(t={}){const{wrapper:o}={...i(),...t.components};return o?n.jsx(o,{...t,children:n.jsx(s,{...t})}):s(t)}export{F as default};
+`,n.jsx(e,{of:a})]})}function I(t={}){const{wrapper:o}={...s(),...t.components};return o?n.jsx(o,{...t,children:n.jsx(i,{...t})}):i(t)}export{I as default};
