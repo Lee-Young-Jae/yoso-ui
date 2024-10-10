@@ -7,7 +7,6 @@ const meta: Meta<typeof Accordion> = {
   title: "Components/Accordion",
   component: Accordion,
   parameters: {
-    tags: ["autodocs"],
     docs: {
       description: {
         component: `
@@ -41,7 +40,6 @@ const YourComponent = () => (
       },
     },
   },
-  tags: ["autodocs"],
   argTypes: {
     multiple: {
       control: "boolean",
@@ -102,7 +100,8 @@ export const Default: Story = {
     <Accordion {...args}>
       <Accordion.Item value="item1">
         <Accordion.Header>
-          결국 중요한 건 인생을 얼마나 살았느냐가 아니다. 그동안 살아간 삶이다."
+          "결국 중요한 건 인생을 얼마나 살았느냐가 아니다. 그동안 살아간
+          삶이다."
         </Accordion.Header>
         <Accordion.Content>
           이 영감을 주는 명언은 우리가 삶을 평가하는 방식을 생각하게 하는 교묘한
@@ -195,16 +194,40 @@ export const UncontrolledMultiple: Story = {
   render: (args) => (
     <Accordion {...args}>
       <Accordion.Item value="item1">
-        <Accordion.Header>헤더 1</Accordion.Header>
-        <Accordion.Content>콘텐츠 1</Accordion.Content>
+        <Accordion.Header>
+          "우리가 반복해서 행하는 것이 자신이다. 따라서 탁월함은 행동이 아니라
+          습관이라 할 수 있다."
+        </Accordion.Header>
+        <Accordion.Content>
+          <sub>
+            아리스토텔레스의 이 명언은 우리가 무엇을 반복하는지가 우리의
+            정체성을 결정한다는 것을 강조합니다.
+          </sub>
+        </Accordion.Content>
       </Accordion.Item>
       <Accordion.Item value="item2">
-        <Accordion.Header>헤더 2</Accordion.Header>
-        <Accordion.Content>콘텐츠 2</Accordion.Content>
+        <Accordion.Header>
+          "당신의 시간은 한정되어 있으니 다른 사람의 삶을 살면서 시간을 낭비하지
+          마세요. 다른 사람의 생각에 따라 살아야 한다는 고정관념에 갇히지
+          마세요."
+        </Accordion.Header>
+        <Accordion.Content>
+          <sub>
+            스티브 잡스의 이 명언은 자신만의 삶을 살아가야 한다는 메시지를
+            전달합니다.
+          </sub>
+        </Accordion.Content>
       </Accordion.Item>
       <Accordion.Item value="item3">
-        <Accordion.Header>헤더 3</Accordion.Header>
-        <Accordion.Content>콘텐츠 3</Accordion.Content>
+        <Accordion.Header>
+          "시작하고 싶다면 말은 그만두고 실천해야 한다."
+        </Accordion.Header>
+        <Accordion.Content>
+          <sub>
+            월트 디즈니의 이 명언은 시작이 중요하다는 것을 강조합니다. 말로만
+            계획을 세우지 말고 실천으로 옮기세요.
+          </sub>
+        </Accordion.Content>
       </Accordion.Item>
     </Accordion>
   ),
@@ -310,16 +333,38 @@ export const ControlledMultiple: Story = {
           }}
         >
           <Accordion.Item value="item1">
-            <Accordion.Header>헤더 1</Accordion.Header>
-            <Accordion.Content>콘텐츠 1</Accordion.Content>
+            <Accordion.Header>
+              인생은 여러 가지를 시도해보고 효과가 있는지 확인하는 과정이다."
+            </Accordion.Header>
+            <Accordion.Content>
+              <sub>
+                이 영감을 주는 짧은 명언은 실패에 대한 두려움에 집중하지 않고
+                도전할 수 있는 용기를 줍니다.
+              </sub>
+            </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item value="item2">
-            <Accordion.Header>헤더 2</Accordion.Header>
-            <Accordion.Content>콘텐츠 2</Accordion.Content>
+            <Accordion.Header>
+              "촬영하지 않은 장면은 100% 놓치게 된다."
+            </Accordion.Header>
+            <Accordion.Content>
+              <sub>
+                이 명언은 기회를 놓치지 않고 적극적으로 행동해야 한다는 메시지를
+                전달합니다.
+              </sub>
+            </Accordion.Content>
           </Accordion.Item>
           <Accordion.Item value="item3">
-            <Accordion.Header>헤더 3</Accordion.Header>
-            <Accordion.Content>콘텐츠 3</Accordion.Content>
+            <Accordion.Header>
+              "열심히 하면 행운도 따라오는 것 같다."
+            </Accordion.Header>
+            <Accordion.Content>
+              <sub>
+                토머스 제퍼슨은 일과 관련된 표현을 바꾸는 데 탁월한 재능이
+                있었습니다. 이 영감을 주는 명언으로 하루를 시작하면 열심히
+                일하는 것이 하루를 보내는 최고의 방법처럼 느껴질 것입니다.
+              </sub>
+            </Accordion.Content>
           </Accordion.Item>
         </Accordion>
       </>
