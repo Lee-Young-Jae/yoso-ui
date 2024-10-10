@@ -1,6 +1,6 @@
 {
   "name": "yoso-ui",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "type": "module",
   "author": "ori_ <ori_@kakao.com>",
   "description": "Yoso-UI는 React 기반의 UI 컴포넌트 라이브러리로, 일관성 있고 사용자 친화적인 인터페이스 구축을 위한 Button, Modal, Toast 등의 재사용 가능한 컴포넌트를 제공합니다.",
