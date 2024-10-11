@@ -45,7 +45,7 @@ export const StyledToastInner = styled.div<{ $type: string }>`
   display: flex;
   gap: ${({ theme }) => theme.spacing.medium};
   padding: ${({ theme }) => theme.spacing.medium};
-  background-color: ${({ theme }) => theme.colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.white};
 
   div {
     display: flex;
@@ -55,11 +55,11 @@ export const StyledToastInner = styled.div<{ $type: string }>`
   }
 
   strong {
-    color: ${({ theme }) => theme.colors.BLACK};
+    color: ${({ theme }) => theme.colors.black};
   }
 
   p {
-    color: ${({ theme }) => theme.colors.GRAY_600};
+    color: ${({ theme }) => theme.colors.gray[600]};
     margin: 0;
     padding: 0;
   }
@@ -68,11 +68,11 @@ export const StyledToastInner = styled.div<{ $type: string }>`
 export function getToastColor(type: string) {
   switch (type) {
     case "success":
-      return defaultTheme.colors.BLUE_500;
+      return defaultTheme.colors.blue[500] || defaultTheme.defaultColor;
     case "error":
-      return defaultTheme.colors.RED_500;
+      return defaultTheme.colors.red[500] || defaultTheme.defaultColor;
     case "warning":
-      return defaultTheme.colors.RED_300;
+      return defaultTheme.colors.red[300] || defaultTheme.defaultColor;
     default:
       return defaultTheme.defaultColor;
   }

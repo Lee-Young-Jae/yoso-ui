@@ -44,6 +44,7 @@ const meta: Meta<typeof Button> = {
       },
     },
     variant: {
+      options: ["default", "primary", "secondary", "danger", "ghost"],
       control: "radio",
       table: {
         category: "Style",

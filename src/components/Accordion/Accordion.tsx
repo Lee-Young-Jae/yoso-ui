@@ -189,7 +189,7 @@ interface AccordionHeaderProps extends HTMLAttributes<HTMLButtonElement> {
 const expandIcon = (
   <polyline
     points="6 9 12 15 18 9"
-    stroke={defaultTheme.colors.GRAY_600}
+    stroke={defaultTheme.colors.gray[600]}
     strokeWidth="2"
     fill="none"
   ></polyline>

@@ -75,7 +75,7 @@ export const NavButton = styled.button`
   color: white;
   cursor: pointer;
   font-size: 22px;
-  text-shadow: 0 0 1px ${({ theme }) => theme.colors.BLACK};
+  text-shadow: 0 0 1px ${({ theme }) => theme.colors.black};
 `;
 
 export const PaginationContainer = styled.div`
@@ -99,14 +99,14 @@ export const Dot = styled.button<{ $isActive: boolean }>`
   ${({ $isActive, theme }) =>
     $isActive
       ? css`
-          box-shadow: 0 0 1px ${theme.colors.BLACK};
-          background-color: ${theme.colors.WHITE};
+          box-shadow: 0 0 1px ${theme.colors.black};
+          background-color: ${theme.colors.white};
           border-radius: ${theme.spacing.large};
           width: ${theme.spacing.large};
         `
       : css`
-          box-shadow: 0 0 1px ${theme.colors.WHITE};
-          background-color: ${theme.colors.GRAY_600};
+          box-shadow: 0 0 1px ${theme.colors.white};
+          background-color: ${theme.colors.gray[600]};
           border-radius: ${theme.spacing.medium};
           width: ${theme.spacing.medium};
         `}

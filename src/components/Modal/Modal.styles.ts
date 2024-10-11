@@ -94,7 +94,7 @@ export const StyledModalHideButton = styled.button`
     width: 1px;
     height: 1rem;
     border-radius: 1px;
-    background-color: ${({ theme }) => theme.colors.BLACK};
+    background-color: ${({ theme }) => theme.colors.black};
   }
 
   &:before {
@@ -106,30 +106,29 @@ export const StyledModalHideButton = styled.button`
 `;
 
 export const StyledModalHeader = styled.div`
-  padding: ${({ theme }) => theme.spacing.xLarge};
+  padding: ${({ theme }) => theme.spacing.xlarge};
   margin: 0;
   font-size: ${({ theme }) => theme.fontSizes.large};
   font-weight: bold;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.GRAY_300};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.gray[300]};
 `;
 
 export const StyledModalTitle = styled.h2`
   margin: 0;
   padding: 0;
-
   font-size: ${({ theme }) => theme.fontSizes.large};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
-  color: ${({ theme }) => theme.colors.BLACK};
+  color: ${({ theme }) => theme.colors.black};
   line-height: 1.5;
 `;
 
 export const StyledModalContent = styled.div`
-  padding: ${({ theme }) => theme.spacing.xLarge};
+  padding: ${({ theme }) => theme.spacing.xlarge};
   font-size: ${({ theme }) => theme.fontSizes.medium};
 `;
 
 export const StyledModalFooter = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding: ${({ theme }) => theme.spacing.xLarge};
+  padding: ${({ theme }) => theme.spacing.xlarge};
 `;

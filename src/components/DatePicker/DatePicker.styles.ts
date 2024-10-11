@@ -6,7 +6,7 @@ export const DatePickerContainer = styled.div`
   max-width: 320px;
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.spacing.small};
 `;
 
@@ -28,7 +28,7 @@ export const NavLeftButton = styled.button`
 
   &::before {
     content: "";
-    border: solid ${({ theme }) => theme.colors.GRAY_700};
+    border: solid ${({ theme }) => theme.colors.gray[700]};
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 3px;
@@ -36,14 +36,14 @@ export const NavLeftButton = styled.button`
   }
 
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.GRAY_700};
+  color: ${({ theme }) => theme.colors.gray[700]};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.BLACK};
+    color: ${({ theme }) => theme.colors.black};
   }
 
   &:disabled {
-    color: ${({ theme }) => theme.colors.GRAY_300};
+    color: ${({ theme }) => theme.colors.gray[300]};
     cursor: not-allowed;
   }
 `;
@@ -54,7 +54,7 @@ export const NavRightButton = styled.button`
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   &::before {
     content: "";
-    border: solid ${({ theme }) => theme.colors.GRAY_700};
+    border: solid ${({ theme }) => theme.colors.gray[700]};
     border-width: 0 2px 2px 0;
     display: inline-block;
     padding: 3px;
@@ -62,14 +62,14 @@ export const NavRightButton = styled.button`
   }
 
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.GRAY_700};
+  color: ${({ theme }) => theme.colors.gray[700]};
 
   &:hover {
-    color: ${({ theme }) => theme.colors.BLACK};
+    color: ${({ theme }) => theme.colors.black};
   }
 
   &:disabled {
-    color: ${({ theme }) => theme.colors.GRAY_300};
+    color: ${({ theme }) => theme.colors.gray[300]};
     cursor: not-allowed;
   }
 `;
@@ -83,7 +83,7 @@ export const Weekday = styled.div`
   text-align: center;
   padding: ${({ theme }) => theme.spacing.small};
   font-size: ${({ theme }) => theme.fontSizes.small};
-  color: ${({ theme }) => theme.colors.GRAY_600};
+  color: ${({ theme }) => theme.colors.gray[600]};
 `;
 
 export const DaysGrid = styled.div`
@@ -113,21 +113,21 @@ export const DayButton = styled.button<{
 
   color: ${({ $isSelected, $isToday, theme }) =>
     $isSelected
-      ? theme.colors.WHITE
+      ? theme.colors.white
       : $isToday
-      ? theme.colors.BLUE_500
-      : theme.colors.BLACK};
+      ? theme.colors.blue[500]
+      : theme.colors.black};
 
   ${({ $isSelected, $isInRange, $isStartDay, $isEndDay, theme }) =>
     $isStartDay || $isEndDay
       ? css`
-          background-color: ${getRGBA(theme.defaultColor, 0.5)};
+          background-color: ${getRGBA(theme.defaultColor, 0.4)};
         `
       : ($isSelected || $isInRange) &&
         css`
           background-color: ${$isSelected
             ? theme.defaultColor
-            : getRGBA(theme.defaultColor, 0.3)};
+            : getRGBA(theme.defaultColor, 0.2)};
         `}
 
   ${({
@@ -177,7 +177,7 @@ export const DayButton = styled.button<{
     `}
 
   &:disabled {
-    color: ${({ theme }) => theme.colors.GRAY_300};
+    color: ${({ theme }) => theme.colors.gray[300]};
     cursor: not-allowed;
   }
 `;
