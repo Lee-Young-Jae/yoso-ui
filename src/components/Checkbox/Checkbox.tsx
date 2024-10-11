@@ -23,7 +23,7 @@ const IndeterminateIcon = (
 );
 
 export interface CheckboxProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
   label?: React.ReactNode;
   error?: string;
   helperText?: string;
