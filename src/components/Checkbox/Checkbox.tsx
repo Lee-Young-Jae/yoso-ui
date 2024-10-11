@@ -23,19 +23,21 @@ const IndeterminateIcon = (
 );
 
 export interface CheckboxProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
   label?: React.ReactNode;
   error?: string;
   helperText?: string;
   disabled?: boolean;
   checked?: boolean;
   indeterminate?: boolean;
+  gap?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
+      id,
       label,
       error,
       helperText,
@@ -43,13 +45,14 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       indeterminate = false,
       checked,
       onChange,
+      gap,
       ...props
     },
     ref
   ) => {
-    const inputRef = useRef<HTMLInputElement>();
-    const id = useId();
-    const checkboxId = `checkbox-${id}`;
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    const generatedid = useId();
+    const checkboxId = `checkbox-${generatedid}`;
 
     useEffect(() => {
       if (inputRef.current) {
@@ -59,7 +62,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <>
-        <CheckboxContainer disabled={disabled}>
+        <CheckboxContainer disabled={disabled} $gap={gap}>
           <HiddenCheckbox
             type="checkbox"
             id={checkboxId}
@@ -67,7 +70,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             checked={checked}
             onChange={onChange}
             ref={(el) => {
-              inputRef.current = el || undefined;
+              inputRef.current = el;
               if (typeof ref === "function") {
                 ref(el);
               } else if (ref) {
