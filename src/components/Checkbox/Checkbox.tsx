@@ -30,6 +30,7 @@ export interface CheckboxProps
   disabled?: boolean;
   checked?: boolean;
   indeterminate?: boolean;
+  gap?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -44,6 +45,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       indeterminate = false,
       checked,
       onChange,
+      gap,
       ...props
     },
     ref
@@ -60,7 +62,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <>
-        <CheckboxContainer disabled={disabled}>
+        <CheckboxContainer disabled={disabled} $gap={gap}>
           <HiddenCheckbox
             type="checkbox"
             id={checkboxId}

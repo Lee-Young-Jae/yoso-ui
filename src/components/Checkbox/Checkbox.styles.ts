@@ -1,10 +1,14 @@
 import styled, { css } from "styled-components";
 
-export const CheckboxContainer = styled.label<{ disabled?: boolean }>`
+export const CheckboxContainer = styled.label<{
+  disabled?: boolean;
+  $gap?: string;
+}>`
   display: flex;
   align-items: center;
   cursor: ${({ disabled }) => (disabled ? "not-allowed" : "pointer")};
   opacity: ${({ disabled }) => (disabled ? 0.6 : 1)};
+  gap: ${({ $gap, theme }) => $gap || theme.spacing.small};
 `;
 
 export const HiddenCheckbox = styled.input.attrs({ type: "checkbox" })`
@@ -59,7 +63,6 @@ export const Icon = styled.svg`
 `;
 
 export const LabelText = styled.span<{ $disabled?: boolean }>`
-  margin-left: ${({ theme }) => theme.spacing.small};
   font-size: ${({ theme }) => theme.fontSizes.medium};
   user-select: none;
   cursor: pointer;
