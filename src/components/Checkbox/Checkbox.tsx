@@ -36,6 +36,7 @@ export interface CheckboxProps
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
+      id,
       label,
       error,
       helperText,
@@ -47,9 +48,9 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     },
     ref
   ) => {
-    const inputRef = useRef<HTMLInputElement>();
-    const id = useId();
-    const checkboxId = `checkbox-${id}`;
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    const generatedid = useId();
+    const checkboxId = `checkbox-${generatedid}`;
 
     useEffect(() => {
       if (inputRef.current) {
@@ -67,7 +68,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             checked={checked}
             onChange={onChange}
             ref={(el) => {
-              inputRef.current = el || undefined;
+              inputRef.current = el;
               if (typeof ref === "function") {
                 ref(el);
               } else if (ref) {
