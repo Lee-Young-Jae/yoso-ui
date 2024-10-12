@@ -29,7 +29,7 @@ export const ToggleHandle = styled.span<{
   transition: ${({ theme }) => theme.transitions.default};
 
   &:focus {
-    outline: 1px solid ${({ theme }) => theme.colors.BLUE_100};
+    outline: 1px solid ${({ theme }) => theme.colors.blue[100]};
     outline-offset: 1px;
   }
 `;
@@ -42,7 +42,7 @@ export const ToggleContainer = styled.label<{ $disabled?: boolean }>`
   user-select: none;
 
   &:focus-within ${ToggleHandle} {
-    outline: 1px solid ${({ theme }) => theme.colors.BLUE_100};
+    outline: 1px solid ${({ theme }) => theme.colors.blue[100]};
     outline-offset: 1px;
   }
 `;
@@ -74,12 +74,12 @@ const getToggleSwitchVariant = ($variant: ToggleVariant, $checked: boolean) => {
         background-color: ${({ theme }) => getRGBA(theme.defaultColor, 0.1)};
         border: 1px solid
           ${({ theme }) =>
-            $checked ? theme.defaultColor : theme.colors.GRAY_300};
+            $checked ? theme.defaultColor : theme.colors.gray[300]};
       `;
     case "solid":
       return css`
         background-color: ${({ theme }) =>
-          $checked ? theme.defaultColor : theme.colors.GRAY_300};
+          $checked ? theme.defaultColor : theme.colors.gray[300]};
         border: 1px solid transparent;
       `;
   }
@@ -95,7 +95,7 @@ export const ToggleSwitch = styled.span<{
   vertical-align: middle;
   ${({ $size }) => getToggleSwitchSize($size)};
   ${({ $variant, $checked }) => getToggleSwitchVariant($variant, $checked)};
-  border-radius: ${({ theme }) => theme.borderRadius.xLarge};
+  border-radius: ${({ theme }) => theme.borderRadius.xlarge};
   transition: ${({ theme }) => theme.transitions.default};
   margin-right: 8px;
 `;
@@ -118,18 +118,18 @@ const getToggleHandleVariant = ($variant: ToggleVariant, $checked: boolean) => {
     case "outline":
       return css`
         background-color: ${({ theme }) =>
-          $checked ? theme.defaultColor : theme.colors.GRAY_300};
+          $checked ? theme.defaultColor : theme.colors.gray[300]};
       `;
     case "solid":
       return css`
-        background-color: ${({ theme }) => theme.colors.WHITE};
+        background-color: ${({ theme }) => theme.colors.white};
       `;
   }
 };
 
 export const ToggleLabel = styled.span`
   font-size: ${({ theme }) => theme.fontSizes.medium};
-  color: ${({ theme }) => theme.colors.BLACK};
+  color: ${({ theme }) => theme.colors.black};
   user-select: none;
 `;
 

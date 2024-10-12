@@ -31,12 +31,10 @@ export const StyledCheckbox = styled.div<{
   width: ${({ theme }) => theme.spacing.large};
   height: ${({ theme }) => theme.spacing.large};
   background: ${({ $checked, $indeterminate, theme }) =>
-    $checked || $indeterminate ? theme.colors.BLUE_700 : theme.colors.WHITE};
+    $checked || $indeterminate ? theme.defaultColor : theme.colors.white};
   border: 1px solid
     ${({ $checked, $indeterminate, theme }) =>
-      $checked || $indeterminate
-        ? theme.colors.BLUE_700
-        : theme.colors.GRAY_300};
+      $checked || $indeterminate ? theme.defaultColor : theme.colors.gray[300]};
   border-radius: ${({ theme }) => theme.borderRadius.small};
   transition: all 150ms;
   display: flex;
@@ -45,20 +43,20 @@ export const StyledCheckbox = styled.div<{
 
   ${HiddenCheckbox}:focus + & {
     outline: none;
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.BLUE_100};
+    border-color: ${({ theme }) => theme.defaultColor};
   }
 
   ${({ disabled }) =>
     disabled &&
     css`
-      border-color: ${({ theme }) => theme.colors.GRAY_300};
-      background: ${({ theme }) => theme.colors.GRAY_100};
+      border-color: ${({ theme }) => theme.colors.gray[300]};
+      background: ${({ theme }) => theme.colors.gray[100]};
     `}
 `;
 
 export const Icon = styled.svg`
   fill: none;
-  stroke: ${({ theme }) => theme.colors.WHITE};
+  stroke: ${({ theme }) => theme.colors.white};
   stroke-width: 2px;
 `;
 
@@ -66,11 +64,12 @@ export const LabelText = styled.span<{ $disabled?: boolean }>`
   font-size: ${({ theme }) => theme.fontSizes.medium};
   user-select: none;
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.black};
 
   ${({ $disabled }) =>
     $disabled &&
     css`
-      color: ${({ theme }) => theme.colors.GRAY_500};
+      color: ${({ theme }) => theme.colors.gray[500]};
       cursor: not-allowed;
     `}
 `;
@@ -78,7 +77,7 @@ export const LabelText = styled.span<{ $disabled?: boolean }>`
 export const HelperText = styled.span<{ $error?: boolean }>`
   display: block;
   color: ${({ $error, theme }) =>
-    $error ? theme.colors.RED_500 : theme.colors.GRAY_600};
+    $error ? theme.colors.red[500] : theme.colors.gray[600]};
   font-size: ${({ theme }) => theme.fontSizes.small};
   margin-top: ${({ theme }) => theme.spacing.xsmall};
   margin-left: ${({ theme }) => theme.spacing.xsmall};

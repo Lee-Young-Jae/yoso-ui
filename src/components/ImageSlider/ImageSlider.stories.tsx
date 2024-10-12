@@ -64,15 +64,19 @@ const slides = [
 
 const slides = [
   {
-    imageUrl: "https://via.placeholder.com/800x400?text=Slide+1",
+    // imageUrl: "https://via.placeholder.com/800x400?text=Slide+1",
+    imageUrl:
+      "https://young-jae.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F4bf4eb4a-0971-4aa4-9f87-8592bbbcf3f2%2Fc02c9244-5e6b-4b53-82f5-20a419cded50%2FGeometric_Serenity_1.png?table=block&id=11d81b43-34ec-80ba-a8e4-d60226ad4909&spaceId=4bf4eb4a-0971-4aa4-9f87-8592bbbcf3f2&width=1420&userId=&cache=v2",
     altText: "슬라이드 1",
   },
   {
-    imageUrl: "https://via.placeholder.com/800x400?text=Slide+2",
+    imageUrl:
+      "https://young-jae.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F4bf4eb4a-0971-4aa4-9f87-8592bbbcf3f2%2F4fe0037f-e795-4831-9f7e-1e5ff74ef273%2FTranquil_Geometrics_in_Pastels_1.png?table=block&id=11d81b43-34ec-8035-984b-e316ac2a33ca&spaceId=4bf4eb4a-0971-4aa4-9f87-8592bbbcf3f2&width=1420&userId=&cache=v2",
     altText: "슬라이드 2",
   },
   {
-    imageUrl: "https://via.placeholder.com/800x400?text=Slide+3",
+    imageUrl:
+      "https://young-jae.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F4bf4eb4a-0971-4aa4-9f87-8592bbbcf3f2%2F57260d49-052c-4da9-ad98-a7f9ca8432f4%2FMinimalist_Geometric_Composition_1.png?table=block&id=11d81b43-34ec-8014-baa0-c79cfd1f7581&spaceId=4bf4eb4a-0971-4aa4-9f87-8592bbbcf3f2&width=1420&userId=&cache=v2",
     altText: "슬라이드 3",
   },
 ];

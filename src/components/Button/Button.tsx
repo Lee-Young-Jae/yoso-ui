@@ -1,3 +1,5 @@
+"use client";
+
 import { forwardRef, MouseEventHandler, ReactElement, ReactNode } from "react";
 import { StyledButton } from "./Button.styles";
 

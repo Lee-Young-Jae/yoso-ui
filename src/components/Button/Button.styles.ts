@@ -16,7 +16,7 @@ const sizeStyles = {
   `,
   large: css`
     font-size: ${({ theme }) => theme.fontSizes.large};
-    padding: ${({ theme }) => `${theme.spacing.large} ${theme.spacing.xLarge}`};
+    padding: ${({ theme }) => `${theme.spacing.large} ${theme.spacing.xlarge}`};
   `,
 };
 
@@ -73,19 +73,19 @@ export const StyledButton = styled.button<{
   // 색상
   ${({ $variant, $outline, theme, $color }) => {
     const variantColors = {
-      primary: theme.colors.BLUE_500,
-      secondary: theme.colors.GRAY_500,
-      danger: theme.colors.RED_500,
-      ghost: theme.colors.GRAY_600,
+      primary: theme.colors.blue[500],
+      secondary: theme.colors.gray[600],
+      danger: theme.colors.red[400],
+      ghost: theme.colors.gray[600],
       default: theme.defaultColor,
     };
 
     const color = $color || variantColors[$variant || "default"];
     const hoverColors = {
-      primary: theme.colors.BLUE_700,
-      secondary: theme.colors.GRAY_600,
-      danger: theme.colors.RED_700,
-      ghost: theme.colors.GRAY_300,
+      primary: theme.colors.blue[700],
+      secondary: theme.colors.gray[700],
+      danger: theme.colors.red[600],
+      ghost: theme.colors.gray[200],
       default: theme.defaultColor,
     };
     const hoverColor = hoverColors[$variant || "default"];
@@ -106,7 +106,7 @@ export const StyledButton = styled.button<{
         background-color: transparent;
         border-color: transparent;
         &:hover:not(:disabled) {
-          background-color: ${theme.colors.GRAY_100};
+          background-color: ${theme.colors.gray[100]};
         }
       `;
     } else {
@@ -124,7 +124,7 @@ export const StyledButton = styled.button<{
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.BLUE_100};
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.blue[100]};
   }
 
   &:disabled {
