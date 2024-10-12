@@ -23,14 +23,14 @@ export const AccordionHeaderButton = styled.button<{ $expanded?: boolean }>`
   align-items: center;
   justify-content: space-between;
   color: ${({ theme, $expanded }) =>
-    $expanded ? theme.colors.BLUE_500 : theme.colors.gray[800]};
+    $expanded ? theme.colors.green[500] : theme.colors.gray[800]};
   &:hover {
-    background-color: ${({ theme }) => getRGBA(theme.defaultColor, 0.1)};
+    background-color: ${({ theme }) => getRGBA(theme.defaultColor, 0.06)};
   }
 
   &:focus {
     outline: none;
-    background-color: ${({ theme }) => getRGBA(theme.defaultColor, 0.1)};
+    background-color: ${({ theme }) => getRGBA(theme.defaultColor, 0.06)};
   }
 `;
 

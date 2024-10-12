@@ -51,7 +51,7 @@ export const SlideImage = styled.img<{
 export const Placeholder = styled.div`
   width: 100%;
   height: 10px;
-  background-color: ${({ theme }) => getRGBA(theme.colors.BLACK, 0.1)};
+  background-color: ${({ theme }) => getRGBA(theme.colors.black, 0.1)};
 `;
 
 export const NavigationContainer = styled.div`
@@ -61,7 +61,7 @@ export const NavigationContainer = styled.div`
   display: flex;
   justify-content: space-between;
   transform: translateY(-50%);
-  padding: 0 ${({ theme }) => theme.spacing.small};
+  padding: 0 ${({ theme }) => theme.spacing.large};
   box-sizing: border-box;
 `;
 
@@ -74,8 +74,7 @@ export const NavButton = styled.button`
   align-items: center;
   color: white;
   cursor: pointer;
-  font-size: 22px;
-  text-shadow: 0 0 1px ${({ theme }) => theme.colors.black};
+  font-size: 32px;
 `;
 
 export const PaginationContainer = styled.div`

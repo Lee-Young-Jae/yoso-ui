@@ -51,12 +51,12 @@ export const StyledModalInner = styled.div<{
   flex-direction: column;
   position: absolute;
   box-sizing: border-box;
-  background-color: white;
   max-height: calc(100vh - 80px);
   max-width: calc(100vw - 80px);
   min-width: 250px;
   border-radius: ${({ theme }) => theme.borderRadius.medium};
   z-index: ${({ theme }) => theme.zIndex.modal + 1};
+  background-color: ${({ theme }) => theme.colors.white};
 
   ${({ $opened, $isAnimating }) =>
     $opened && !$isAnimating
@@ -125,6 +125,7 @@ export const StyledModalTitle = styled.h2`
 export const StyledModalContent = styled.div`
   padding: ${({ theme }) => theme.spacing.xlarge};
   font-size: ${({ theme }) => theme.fontSizes.medium};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const StyledModalFooter = styled.div`

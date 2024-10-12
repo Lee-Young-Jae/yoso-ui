@@ -15,6 +15,7 @@ export const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: ${({ theme }) => theme.spacing.large};
+  color: ${({ theme }) => theme.colors.black};
 `;
 
 export const MonthYear = styled.div`
@@ -110,12 +111,13 @@ export const DayButton = styled.button<{
   margin: 0;
   background: transparent;
   cursor: pointer;
+  border-radius: ${({ theme }) => theme.borderRadius.medium};
 
   color: ${({ $isSelected, $isToday, theme }) =>
     $isSelected
       ? theme.colors.white
       : $isToday
-      ? theme.colors.blue[500]
+      ? theme.defaultColor
       : theme.colors.black};
 
   ${({ $isSelected, $isInRange, $isStartDay, $isEndDay, theme }) =>
@@ -127,7 +129,7 @@ export const DayButton = styled.button<{
         css`
           background-color: ${$isSelected
             ? theme.defaultColor
-            : getRGBA(theme.defaultColor, 0.2)};
+            : getRGBA(theme.defaultColor, 0.1)};
         `}
 
   ${({

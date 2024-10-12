@@ -31,12 +31,10 @@ export const StyledCheckbox = styled.div<{
   width: ${({ theme }) => theme.spacing.large};
   height: ${({ theme }) => theme.spacing.large};
   background: ${({ $checked, $indeterminate, theme }) =>
-    $checked || $indeterminate ? theme.colors.blue[700] : theme.colors.white};
+    $checked || $indeterminate ? theme.defaultColor : theme.colors.white};
   border: 1px solid
     ${({ $checked, $indeterminate, theme }) =>
-      $checked || $indeterminate
-        ? theme.colors.blue[700]
-        : theme.colors.gray[300]};
+      $checked || $indeterminate ? theme.defaultColor : theme.colors.gray[300]};
   border-radius: ${({ theme }) => theme.borderRadius.small};
   transition: all 150ms;
   display: flex;
@@ -45,7 +43,7 @@ export const StyledCheckbox = styled.div<{
 
   ${HiddenCheckbox}:focus + & {
     outline: none;
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.blue[100]};
+    border-color: ${({ theme }) => theme.defaultColor};
   }
 
   ${({ disabled }) =>
@@ -66,6 +64,7 @@ export const LabelText = styled.span<{ $disabled?: boolean }>`
   font-size: ${({ theme }) => theme.fontSizes.medium};
   user-select: none;
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.black};
 
   ${({ $disabled }) =>
     $disabled &&

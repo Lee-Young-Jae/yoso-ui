@@ -4,10 +4,11 @@ export const InputContainer = styled.div<{ $fullWidth?: boolean }>`
   display: flex;
   flex-direction: column;
   width: ${({ $fullWidth }) => ($fullWidth ? "100%" : "auto")};
+  gap: 4px;
 `;
 
 export const Label = styled.label`
-  margin-bottom: ${({ theme }) => theme.spacing.xsmall};
+  margin-bottom: ${({ theme }) => theme.spacing.small};
   font-size: ${({ theme }) => theme.fontSizes.medium};
   color: ${({ theme }) => theme.colors.black};
 `;
@@ -31,10 +32,7 @@ export const InputWrapper = styled.div<{
 
   &:focus-within {
     border-color: ${({ theme, $error }) =>
-      $error ? theme.colors.red[500] : theme.colors.blue[500]};
-    box-shadow: 0 0 0 1px
-      ${({ theme, $error }) =>
-        $error ? theme.colors.red[500] : theme.colors.blue[500]};
+      $error ? theme.colors.red[500] : theme.defaultColor};
   }
 `;
 
@@ -64,6 +62,7 @@ export const StyledInput = styled.input<{ $size?: string; $hasIcon?: boolean }>`
         return `${theme.spacing.small} ${basePadding}`;
     }
   }};
+  color: ${({ theme }) => theme.colors.black};
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.gray[500]};
