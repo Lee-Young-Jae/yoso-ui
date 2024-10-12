@@ -37,7 +37,7 @@ const TooltipContent = styled.div<{
   position: absolute;
   z-index: ${({ theme }) => theme.zIndex.tooltip};
   color: ${({ theme }) => theme.defaultColor};
-  background-color: ${({ theme }) => theme.colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadows.small};
   padding: ${({ theme }) => theme.spacing.medium};
   border-radius: ${({ theme }) => theme.borderRadius.small};
