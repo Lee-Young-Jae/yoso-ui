@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { ButtonProps } from "./Button";
+import { darken, getRGBA, lighten } from "../../utils";
 
 const sizeStyles = {
   xsmall: css`
@@ -73,20 +74,20 @@ export const StyledButton = styled.button<{
   // 색상
   ${({ $variant, $outline, theme, $color }) => {
     const variantColors = {
-      primary: theme.colors.blue[500],
-      secondary: theme.colors.gray[600],
-      danger: theme.colors.red[400],
-      ghost: theme.colors.gray[600],
+      primary: theme.colors.primary,
+      secondary: theme.colors.secondary,
+      danger: theme.colors.error,
+      ghost: theme.colors.secondary,
       default: theme.defaultColor,
     };
 
     const color = $color || variantColors[$variant || "default"];
     const hoverColors = {
-      primary: theme.colors.blue[700],
-      secondary: theme.colors.gray[700],
-      danger: theme.colors.red[600],
-      ghost: theme.colors.gray[200],
-      default: theme.defaultColor,
+      primary: darken(theme.colors.primary, 0.1),
+      secondary: darken(theme.colors.secondary, 0.1),
+      danger: darken(theme.colors.error, 0.1),
+      ghost: lighten(theme.colors.secondary, 0.9),
+      default: darken(theme.defaultColor, 0.1),
     };
     const hoverColor = hoverColors[$variant || "default"];
 
@@ -124,7 +125,7 @@ export const StyledButton = styled.button<{
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 2px ${({ theme }) => theme.colors.blue[100]};
+    box-shadow: 0 0 0 2px ${({ theme }) => getRGBA(theme.defaultColor, 0.3)};
   }
 
   &:disabled {

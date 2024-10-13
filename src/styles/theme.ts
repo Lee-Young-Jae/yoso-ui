@@ -14,35 +14,18 @@ type ColorShades = Partial<{
 export interface Theme {
   defaultColor: string;
   colors: {
+    primary: string;
+    secondary: string;
+    success: string;
+    error: string;
+    warning: string;
+    info: string;
     red: ColorShades;
     blue: ColorShades;
     green: ColorShades;
     gray: ColorShades;
     black: string;
     white: string;
-    // RED_300: string;
-    // RED_500: string;
-    // RED_700: string;
-    // RED_900: string;
-    // GREEN_300: string;
-    // GREEN_500: string;
-    // GREEN_700: string;
-    // GREEN_900: string;
-    // BLUE_100: string;
-    // BLUE_300: string;
-    // BLUE_500: string;
-    // BLUE_700: string;
-    // BLUE_900: string;
-    // GRAY_50: string;
-    // GRAY_100: string;
-    // GRAY_200: string;
-    // GRAY_300: string;
-    // GRAY_500: string;
-    // GRAY_600: string;
-    // GRAY_800: string;
-    // GRAY_900: string;
-    // BLACK: string;
-    // WHITE: string;
   };
   fontSizes: {
     small: string;
@@ -60,7 +43,7 @@ export interface Theme {
     xlarge: string;
   };
 
-  borderRadius?: {
+  borderRadius: {
     small: string;
     medium: string;
     large: string;
@@ -88,6 +71,12 @@ export interface Theme {
 export const defaultTheme: Theme = {
   defaultColor: "#22cb88",
   colors: {
+    primary: "#2196F3", // blue[500]
+    secondary: "#757575", // gray[600]
+    success: "#4CAF50", // green[500]
+    error: "#F44336", // red[500]
+    warning: "#FFC107",
+    info: "#00BCD4",
     red: {
       50: "#ffebee",
       100: "#ffcdd2",
@@ -139,29 +128,6 @@ export const defaultTheme: Theme = {
 
     black: "#212121",
     white: "#FFFFFF",
-    // RED_300: "#FFCDD2",
-    // RED_500: "#F44336",
-    // RED_700: "#D32F2F",
-    // RED_900: "#B71C1C",
-    // GREEN_300: "#A5D6A7",
-    // GREEN_500: "#4CAF50",
-    // GREEN_700: "#388E3C",
-    // GREEN_900: "#1B5E20",
-    // BLUE_100: "#BBDEFB",
-    // BLUE_300: "#81D4FA",
-    // BLUE_500: "#2196F3",
-    // BLUE_700: "#1976D2",
-    // BLUE_900: "#0D47A1",
-    // GRAY_50: "#FAFAFA",
-    // GRAY_100: "#F5F5F5",
-    // GRAY_200: "#EEEEEE",
-    // GRAY_300: "#E0E0E0",
-    // GRAY_500: "#9E9E9E",
-    // GRAY_600: "#757575",
-    // GRAY_800: "#424242",
-    // GRAY_900: "#212121",
-    // BLACK: "#212121",
-    // WHITE: "#FFFFFF",
   },
   fontSizes: {
     small: "0.8rem",
