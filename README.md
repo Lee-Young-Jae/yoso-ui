@@ -1,6 +1,6 @@
 <div align="center">
 <img
- src="https://young-jae.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F4bf4eb4a-0971-4aa4-9f87-8592bbbcf3f2%2Fc69ede6d-993f-48d5-82e1-e45028b1c670%2Flogo.webp?table=block&id=10981b43-34ec-80c3-909c-f1575d566455&spaceId=4bf4eb4a-0971-4aa4-9f87-8592bbbcf3f2&width=1420&userId=&cache=v2"
+ src="https://young-jae.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F4bf4eb4a-0971-4aa4-9f87-8592bbbcf3f2%2F18555ad2-d3c3-48ab-a8a9-849c059bc831%2FYoso-icon.png?table=block&id=11d81b43-34ec-806f-85e3-e6abc3ae9dab&spaceId=4bf4eb4a-0971-4aa4-9f87-8592bbbcf3f2&width=1420&userId=&cache=v2"
   alt="YOSO UI Logo"
   width="200"
   height="200"

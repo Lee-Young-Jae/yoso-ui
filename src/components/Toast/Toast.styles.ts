@@ -68,11 +68,13 @@ export const StyledToastInner = styled.div<{ $type: string }>`
 export function getToastColor(type: string) {
   switch (type) {
     case "success":
-      return defaultTheme.colors.blue[500] || defaultTheme.defaultColor;
+      return defaultTheme.colors.success || defaultTheme.defaultColor;
     case "error":
-      return defaultTheme.colors.red[500] || defaultTheme.defaultColor;
+      return defaultTheme.colors.error || defaultTheme.defaultColor;
     case "warning":
-      return defaultTheme.colors.red[300] || defaultTheme.defaultColor;
+      return defaultTheme.colors.warning || defaultTheme.defaultColor;
+    case "info":
+      return defaultTheme.colors.info || defaultTheme.defaultColor;
     default:
       return defaultTheme.defaultColor;
   }
