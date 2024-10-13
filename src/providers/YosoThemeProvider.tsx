@@ -8,11 +8,13 @@ import { ToastProvider } from "../components/Toast/ToastProvider";
 interface ThemeContextProps {
   themeMode: "light" | "dark";
   toggleThemeMode: () => void;
+  theme: Theme;
 }
 
 const ThemeContext = createContext<ThemeContextProps>({
   themeMode: "light",
   toggleThemeMode: () => {},
+  theme: defaultTheme,
 });
 
 export const useTheme = () => useContext(ThemeContext);
@@ -77,7 +79,30 @@ const YosoThemeProvider = ({
         ...baseTheme.fontSizes,
         ...(theme?.fontSizes || {}),
       },
-      // 필요한 다른 속성들도 병합
+      spacing: {
+        ...baseTheme.spacing,
+        ...(theme?.spacing || {}),
+      },
+      fontWeights: {
+        ...baseTheme.fontWeights,
+        ...(theme?.fontWeights || {}),
+      },
+      borderRadius: {
+        ...baseTheme.borderRadius,
+        ...(theme?.borderRadius || {}),
+      },
+      shadows: {
+        ...baseTheme.shadows,
+        ...(theme?.shadows || {}),
+      },
+      transitions: {
+        ...baseTheme.transitions,
+        ...(theme?.transitions || {}),
+      },
+      zIndex: {
+        ...baseTheme.zIndex,
+        ...(theme?.zIndex || {}),
+      },
     };
   }, [baseTheme, theme]);
 
@@ -86,7 +111,9 @@ const YosoThemeProvider = ({
   };
 
   return (
-    <ThemeContext.Provider value={{ themeMode, toggleThemeMode }}>
+    <ThemeContext.Provider
+      value={{ themeMode, toggleThemeMode, theme: mergedTheme }}
+    >
       <StyledThemeProvider theme={mergedTheme}>
         <ToastProvider>
           {children}
