@@ -1,4 +1,4 @@
-import{j as a}from"./jsx-runtime-CkxqCPlQ.js";import{r as s}from"./index-DJO9vBfz.js";import{d as m,l as W}from"./styled-components.browser.esm-Dsr6U-en.js";import{g as Re}from"./style-CuGJsH27.js";const ze=m.div`
+import{j as a}from"./jsx-runtime-CkxqCPlQ.js";import{r as s}from"./index-DJO9vBfz.js";import{d as m,l as W}from"./styled-components.browser.esm-Dsr6U-en.js";import{g as Re}from"./style-x6FuVGrZ.js";const ze=m.div`
   position: relative;
   overflow: hidden;
   touch-action: pan-y; // 가로 슬라이드 방지
