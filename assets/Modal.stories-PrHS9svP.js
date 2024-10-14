@@ -21,7 +21,7 @@ import{j as t}from"./jsx-runtime-CkxqCPlQ.js";import{r as d}from"./index-DJO9vBf
   visibility: hidden;
 
   ${({$opened:o,$isAnimating:n})=>o&&!n?y`
-          opacity: 1;
+          opacity: 0.99;
           visibility: visible;
           transition: opacity 0.3s;
         `:y`

@@ -1,4 +1,4 @@
-import{j as n}from"./jsx-runtime-CkxqCPlQ.js";import{useMDXComponents as d}from"./index-BrnU7xv7.js";import{ag as t,ah as c,ai as l}from"./chunk-NUUEMKO5-zbIKzlA_.js";import{A as s,D as r,U as a,a as m,C as h,b as x}from"./Accordion.stories-BsXpTIcp.js";import"./index-DJO9vBfz.js";import"./iframe-PD0KnZk-.js";import"../sb-preview/runtime.js";import"./index-Cp9I2zMD.js";import"./index-D-8MO0q_.js";import"./index-CvTBScqg.js";import"./index-DrFu-skq.js";import"./client-Cd-gdppX.js";import"./styled-components.browser.esm-Dsr6U-en.js";import"./style-x6FuVGrZ.js";import"./theme-D9dlWgph.js";import"./Button-CpD3pMnL.js";function i(e){const o={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...d(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{title:"Components/Accordion",component:s}),`
+import{j as n}from"./jsx-runtime-CkxqCPlQ.js";import{useMDXComponents as d}from"./index-BrnU7xv7.js";import"./chunk-NUUEMKO5-BHTnVCbM.js";import{ae as t,af as c,ag as l}from"./index-Be9RlU_B.js";import{A as s,D as r,U as a,a as m,C as x,b as h}from"./Accordion.stories-BsXpTIcp.js";import"./index-DJO9vBfz.js";import"./iframe-Dme0zGwQ.js";import"../sb-preview/runtime.js";import"./client-Cd-gdppX.js";import"./index-Cp9I2zMD.js";import"./index-D-8MO0q_.js";import"./index-CvTBScqg.js";import"./index-DrFu-skq.js";import"./styled-components.browser.esm-Dsr6U-en.js";import"./style-x6FuVGrZ.js";import"./theme-D9dlWgph.js";import"./Button-CpD3pMnL.js";function i(e){const o={code:"code",h1:"h1",h2:"h2",h3:"h3",li:"li",p:"p",pre:"pre",strong:"strong",ul:"ul",...d(),...e.components};return n.jsxs(n.Fragment,{children:[n.jsx(t,{title:"Components/Accordion",component:s}),`
 `,n.jsx(o.h1,{id:"accordion-컴포넌트",children:"Accordion 컴포넌트"}),`
 `,n.jsxs(o.p,{children:[n.jsx(o.code,{children:"Accordion"})," 컴포넌트는 콘텐츠의 섹션을 접고 펼칠 수 있는 UI 요소를 제공합니다. 단일 및 다중 확장, 컨트롤드 및 언컨트롤드 모드를 모두 지원하며, 다양한 옵션을 통해 커스터마이징할 수 있습니다."]}),`
 `,n.jsx("br",{}),`
@@ -84,7 +84,7 @@ const YourComponent = () => (
   </Accordion>
 </>;
 `})}),`
-`,n.jsx(c,{of:h}),`
+`,n.jsx(c,{of:x}),`
 `,n.jsxs(o.ul,{children:[`
 `,n.jsx(o.li,{children:"사용자 정의 스타일 적용"}),`
 `]}),`
@@ -100,4 +100,4 @@ const YourComponent = () => (
   </Accordion.Item>
 </Accordion>
 `})}),`
-`,n.jsx(c,{of:x})]})}function U(e={}){const{wrapper:o}={...d(),...e.components};return o?n.jsx(o,{...e,children:n.jsx(i,{...e})}):i(e)}export{U as default};
+`,n.jsx(c,{of:h})]})}function k(e={}){const{wrapper:o}={...d(),...e.components};return o?n.jsx(o,{...e,children:n.jsx(i,{...e})}):i(e)}export{k as default};
