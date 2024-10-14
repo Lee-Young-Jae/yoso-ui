@@ -32,7 +32,7 @@ export const StyledModal = styled.div<{
   ${({ $opened, $isAnimating }) =>
     $opened && !$isAnimating
       ? css`
-          opacity: 1;
+          opacity: 0.99;
           visibility: visible;
           transition: opacity 0.3s;
         `
