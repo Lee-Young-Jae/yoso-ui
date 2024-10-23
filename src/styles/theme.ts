@@ -37,6 +37,7 @@ export interface Theme {
     bold: number;
   };
   spacing: {
+    xsmall: string;
     small: string;
     medium: string;
     large: string;
@@ -146,6 +147,7 @@ export const defaultTheme: Theme = {
     bold: 600,
   },
   spacing: {
+    xsmall: "2px",
     small: "4px",
     medium: "8px",
     large: "16px",
