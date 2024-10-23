@@ -13,6 +13,11 @@ export const Label = styled.label`
   color: ${({ theme }) => theme.colors.black};
 `;
 
+export const Required = styled.span`
+  color: ${({ theme }) => theme.colors.red[500]};
+  margin-left: ${({ theme }) => theme.spacing.xsmall};
+`;
+
 export const InputWrapper = styled.div<{
   $disabled?: boolean;
   $error?: boolean;

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { forwardRef, useId } from "react";
 import {
   InputContainer,
@@ -6,6 +8,7 @@ import {
   StyledInput,
   IconContainer,
   HelperText,
+  Required,
 } from "./Input.styles";
 
 export interface InputProps
@@ -21,7 +24,7 @@ export interface InputProps
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
-  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -46,6 +49,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const uid = useId();
     const inputId = id || uid;
     const hasIcon = Boolean(leftIcon || rightIcon);
+    const isRequired = props.required;
 
     return (
       <InputContainer
@@ -56,7 +60,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <Label htmlFor={inputId}>
             {label}
-            {props.required && <span aria-hidden={true}>*</span>}
+            {isRequired && <Required aria-hidden="true">*</Required>}
           </Label>
         )}
         <InputWrapper
