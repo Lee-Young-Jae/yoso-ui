@@ -13,6 +13,7 @@ export { default as DatePicker } from "./components/DatePicker/DatePicker";
 export { default as Checkbox } from "./components/Checkbox/Checkbox";
 export { default as Accordion } from "./components/Accordion/Accordion";
 export { default as Tooltip } from "./components/Tooltip/Tooltip";
+export { default as Radio } from "./components/Radio/Radio";
 export { useTheme } from "./providers/YosoThemeProvider";
 
 export type { Theme } from "./styles/theme";
