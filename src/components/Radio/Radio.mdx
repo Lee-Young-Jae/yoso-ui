@@ -1,0 +1,93 @@
+import { Meta, Canvas, Story, Controls } from "@storybook/addon-docs";
+import * as RadioStories from "./Radio.stories";
+import Radio from "./Radio";
+
+<Meta title="Components/Radio" component={Radio} />
+
+# Radio 컴포넌트
+
+`Radio` 컴포넌트는 여러 옵션 중 하나를 선택할 수 있는 라디오 버튼을 제공합니다. 단일로 사용하거나 `Radio.Group` 내에서 그룹으로 관리할 수 있으며, 컨트롤드 및 언컨트롤드 모드를 모두 지원합니다.
+
+## 주요 기능
+
+- **단일 및 그룹 사용 지원**: `Radio`를 개별적으로 사용하거나 `Radio.Group`을 통해 그룹화할 수 있습니다.
+- **컨트롤드 및 언컨트롤드 모드 지원**: `value`와 `defaultValue`를 통해 상태 관리 방식을 선택할 수 있습니다.
+- **접근성 향상**: WAI-ARIA 가이드라인을 준수하여 제작되었으며, 스크린 리더와 키보드 내비게이션을 지원합니다.
+- **스타일 커스터마이징 가능**: `className`과 `style`을 사용하여 커스텀 스타일을 적용할 수 있습니다.
+
+## 사용법
+
+### 기본 사용법
+
+```tsx
+import Radio from "yoso-ui/Radio";
+
+const App = () => (
+  <Radio value="option1" onChange={(e) => console.log(e.target.value)}>
+    옵션 1
+  </Radio>
+);
+```
+
+<Canvas of={RadioStories.Default} />
+<Controls of={RadioStories.Default} />
+
+### 그룹 사용법
+
+```tsx
+import { Radio } from "yoso-ui";
+
+const App = () => {
+  const [value, setValue] = useState("option1");
+
+  return (
+    <Radio.Group value={value} onChange={(e) => setValue(e.target.value)}>
+      <Radio value="option1">옵션 1</Radio>
+      <Radio value="option2">옵션 2</Radio>
+      <Radio value="option3">옵션 3</Radio>
+    </Radio.Group>
+  );
+};
+```
+
+<Canvas of={RadioStories.RadioGroupExample} />
+
+### 언컨트롤드 모드
+
+```tsx
+import { Radio } from "yoso-ui";
+
+<Radio.Group defaultValue="option2">
+  <Radio value="option1">옵션 1</Radio>
+  <Radio value="option2">옵션 2</Radio>
+  <Radio value="option3">옵션 3</Radio>
+</Radio.Group>;
+```
+
+<Canvas of={RadioStories.UncontrolledRadioGroup} />
+
+### 옵션 배열로 그룹 생성
+
+```tsx
+import { Radio } from "yoso-ui";
+
+const options = [
+  { label: "사과", value: "apple" },
+  { label: "배", value: "pear" },
+  { label: "오렌지", value: "orange", disabled: true },
+];
+```
+
+<Canvas of={RadioStories.RadioGroupWithOptions} />
+
+### 커스텀 스타일 라디오
+
+```tsx
+import { Radio } from "yoso-ui";
+
+<Radio value="custom" color="#FF5722">
+  커스텀 컬러 라디오
+</Radio>;
+```
+
+<Canvas of={RadioStories.CustomStyledRadio} />
