@@ -14,6 +14,7 @@ export { default as Checkbox } from "./components/Checkbox/Checkbox";
 export { default as Accordion } from "./components/Accordion/Accordion";
 export { default as Tooltip } from "./components/Tooltip/Tooltip";
 export { default as Radio } from "./components/Radio/Radio";
+export { default as RollingNumber } from "./components/Typography/RollingNumber/RollingNumber";
 export { useTheme } from "./providers/YosoThemeProvider";
 
 export type { Theme } from "./styles/theme";
