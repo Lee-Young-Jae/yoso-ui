@@ -4,7 +4,7 @@ import { useState } from "react";
 import Button from "../../Button/Button";
 
 const meta: Meta<typeof RollingNumber> = {
-  title: "Components/Typography/RollingNumber",
+  title: "Typography/RollingNumber",
   component: RollingNumber,
   parameters: {
     docs: {
