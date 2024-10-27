@@ -1,4 +1,4 @@
-import{j as e}from"./jsx-runtime-CkxqCPlQ.js";import{useMDXComponents as s}from"./index-BrnU7xv7.js";import{ae as c,ah as i,ai as o}from"./index-BJCHUGJK.js";import"./index-DJO9vBfz.js";import"./iframe-CHaK5TDr.js";import"../sb-preview/runtime.js";import"./index-Cp9I2zMD.js";import"./index-D-8MO0q_.js";import"./index-CvTBScqg.js";import"./index-DrFu-skq.js";function l(r){const t={h1:"h1",h2:"h2",p:"p",...s(),...r.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{title:"Theme/Colors"}),`
+import{j as e}from"./jsx-runtime-CkxqCPlQ.js";import{useMDXComponents as s}from"./index-BrnU7xv7.js";import{ae as c,ah as i,ai as o}from"./index-KllzpXpg.js";import"./index-DJO9vBfz.js";import"./iframe-DtId2032.js";import"../sb-preview/runtime.js";import"./index-Cp9I2zMD.js";import"./index-D-8MO0q_.js";import"./index-CvTBScqg.js";import"./index-DrFu-skq.js";function l(r){const t={h1:"h1",h2:"h2",p:"p",...s(),...r.components};return e.jsxs(e.Fragment,{children:[e.jsx(c,{title:"Theme/Colors"}),`
 `,e.jsx(t.h1,{id:"theme-colors",children:"Theme Colors"}),`
 `,e.jsx(t.p,{children:"Yoso UI의 테마에서 제공하는 색상 팔레트입니다."}),`
 `,e.jsx(t.h2,{id:"색상-목록",children:"색상 목록"}),`
