@@ -242,14 +242,14 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
     const isExpanded = activeValues.includes(value);
 
     const contentRef = useRef<HTMLDivElement>(null);
-    const [height, setHeight] = useState<number>(0);
+    const height = useRef<number>(0);
 
     useEffect(() => {
       if (contentRef.current) {
         if (isExpanded) {
-          setHeight(contentRef.current.scrollHeight);
+          height.current = contentRef.current.scrollHeight;
         } else {
-          setHeight(0);
+          height.current = 0;
         }
       }
     }, [isExpanded]);
@@ -257,7 +257,7 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
     return (
       <AccordionContentPanel
         $expanded={isExpanded}
-        $height={height}
+        $height={height.current}
         role="region"
         id={`accordion-content-${value}`}
         aria-labelledby={`accordion-header-${value}`}
